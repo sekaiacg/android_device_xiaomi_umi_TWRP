@@ -1,0 +1,4 @@
+sys.usb.controller=a600000.dwc3
+persist.sys.usb.config=mtp
+persist.service.adb.enable=1                                                    
+persist.service.debuggable=1
