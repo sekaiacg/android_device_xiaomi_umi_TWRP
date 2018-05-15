@@ -2,17 +2,25 @@
 
 TWRP device tree for Xiaomi MIX 2S
 
+Kernel and all blobs are extracted from miui_MIMIX2S_V9.5.12.0.ODGCNFA_28e7b5cf2e_8.0 firmware.
+
+## Warning
+
+Only tested on my own device. Also not fully tested.
+
 ## Features
 
 Works:
 
 - ADB
 - Decryption of /data
+- Screen brightness settings
 
-Not works:
+Not (fully) works:
 
 - Screen flashes/flickering
-- UI respond slowly
+- UI responds slowly
+- No vibration on touch
 
 ## Compile
 
@@ -78,6 +86,8 @@ printf("setting DRM_FORMAT_XBGR8888 and GGL_PIXEL_FORMAT_RGBX_8888\n");
 ## Thanks
 
 - @travismills82 for his TWRP tree used as skeleton: [twrp_android_device_samsung_star2qltechn](https://github.com/travismills82/twrp_android_device_samsung_star2qltechn)
+
+- @TeamWin for sagit TWRP tree used for partial decryption works: [android_device_xiaomi_sagit](https://github.com/TeamWin/android_device_xiaomi_sagit)
 
 - 宅科技_zecoki (or wx_pmZ7777t in the inner link), used for ADB works: [	
 [Recovery] 小米 MIX2s TWRP recovery下载](https://blog.csdn.net/u010880477/article/details/80285813)
