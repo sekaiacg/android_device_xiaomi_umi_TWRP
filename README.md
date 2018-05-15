@@ -24,10 +24,10 @@ Not (fully) works:
 
 ## Compile
 
-First checkout full omnirom tree:
+First checkout minimal twrp with omnirom tree:
 
 ```
-repo init -u git://github.com/omnirom/android.git -b android-8.1
+repo init -u git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-8.1
 repo sync
 ```
 
@@ -42,6 +42,7 @@ Then add these projects to .repo/manifest.xml:
 Finally execute these:
 
 ```
+export ALLOW_MISSING_DEPENDENCIES=true
 . build/envsetup.sh
 lunch omni_polaris-eng 
 make adbd recoveryimage -j8
