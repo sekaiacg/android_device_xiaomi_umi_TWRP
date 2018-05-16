@@ -34,7 +34,7 @@ repo sync
 Then add these projects to .repo/manifest.xml:
 
 ```xml
-<project path="device/qcom/common/cryptfs_hw" name="notsyncing/android_vendor_qcom_opensource_cryptfs_hw" remote="github" revision="android-8.1" />
+<project path="device/qcom/common/cryptfs_hw" name="notsyncing/android_vendor_qcom_opensource_cryptfs_hw" remote="github" revision="lineage-15.1" />
 
 <project path="device/xiaomi/polaris" name="notsyncing/android_device_xiaomi_polaris" remote="github" revision="android-8.1" />
 ```
