@@ -78,7 +78,7 @@ service keystore_auth /sbin/keystore_auth
     disabled
     seclabel u:r:recovery:s0
 
-service keystore /sbin/keystore /data/misc/keystore
+service keystore /sbin/keystore /tmp/misc/keystore
     user root
     group root drmrpc readproc
     disabled
