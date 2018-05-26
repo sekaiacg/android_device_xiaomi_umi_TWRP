@@ -15,12 +15,13 @@ Works:
 - ADB
 - Decryption of /data
 - Screen brightness settings
+- Now UI is very smooth (thanks to TWRP fix 16d831bee5a660f5ac6da0d8fff2b3ec4697d663)
 
 Not (fully) works:
 
 - Screen flashes/flickering
-- UI responds slowly (reported to TWRP: [#1233](https://github.com/TeamWin/Team-Win-Recovery-Project/issues/1233))
 - No vibration on touch
+- IMPORTANT: You should checkout commit 16d831bee5a660f5ac6da0d8fff2b3ec4697d663 on bootable/recovery because since commit 34ad728823b186f93016387f39388cdbde35b3ed it will stuck in blank screen on boot!
 
 ## Compile
 
