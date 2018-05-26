@@ -19,7 +19,7 @@ Works:
 Not (fully) works:
 
 - Screen flashes/flickering
-- UI responds slowly
+- UI responds slowly (reported to TWRP: [#1233](https://github.com/TeamWin/Team-Win-Recovery-Project/issues/1233))
 - No vibration on touch
 
 ## Compile
