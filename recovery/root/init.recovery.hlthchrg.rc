@@ -1,5 +1,0 @@
-# charger for Android 8.0 and up
-
-service charger /charger -r
-    critical
-    seclabel u:r:charger:s0
