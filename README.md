@@ -1,12 +1,40 @@
 # android_device_xiaomi_polaris
+For building TWRP for Xiaomi Mi MIX 2S
 
 TWRP device tree for Xiaomi MIX 2S
 
 Kernel and all blobs are extracted from miui_MIMIX2S_V9.5.12.0.ODGCNFA_28e7b5cf2e_8.0 firmware.
 
-## Warning
+To compile
 
-Only tested on my own device. Also not fully tested.
+```bash
+. build/envsetup.sh && lunch omni_polaris-eng && mka recoveryimage
+```
+
+The Xiaomi Mi MIX 2S (codenamed _"polaris"_) are high-end smartphones from Xiaomi.
+
+Xiaomi Mi MIX 2S was announced and released in April 2018.
+
+## Device specifications
+
+| Device       | Xiaomi Mi MIX 2S                                |
+| -----------: | :---------------------------------------------- |
+| SoC          | Qualcomm SDM845 Snapdragon 845                  |
+| CPU          | 8x Qualcomm® Kryo™ 385 up to 2.8GHz             |
+| GPU          | Adreno 630                                      |
+| Memory       | 6GB / 8GM RAM (LPDDR4X)                         |
+| Shipped Android version | 8.0                                  |
+| Storage      | 64GB / 128GB / 256GB UFS 2.1 flash storage      |
+| Battery      | Non-removable Li-Po 3400 mAh                    |
+| Dimensions   | 150.86 x 74.9 x 8.1 mm                          |
+| Display      | 2160 x 1080 (18:9), 5.99 inch                   |
+| Rear camera 1 | 12MP, f/1.8 Dual LED flash                     |
+| Rear camera 2 | 12MP, f/2.4                                    |
+| Front camera | 5MP, 1-micron pixels, f/2.2 1080p 30 fps video  |
+
+## Device picture
+
+![Xiaomi Mi MIX 2S](https://i1.mifile.cn/f/i/2018/mix2s/specs/black.png?1)
 
 ## Features
 
@@ -20,7 +48,7 @@ Works:
 Not (fully) works:
 
 - No vibration on touch
-- IMPORTANT: You should checkout commit 16d831bee5a660f5ac6da0d8fff2b3ec4697d663 on bootable/recovery because since commit 34ad728823b186f93016387f39388cdbde35b3ed it will stuck in blank screen on boot!
+- [commit 34ad728823b186f93016387f39388cdbde35b3ed makes it stuck in blank screen on boot](https://github.com/omnirom/android_bootable_recovery/issues/219)
 
 ## Compile
 
@@ -34,8 +62,6 @@ repo sync
 Then add these projects to .repo/manifest.xml:
 
 ```xml
-<project path="device/qcom/common/cryptfs_hw" name="notsyncing/android_vendor_qcom_opensource_cryptfs_hw" remote="github" revision="lineage-15.1" />
-
 <project path="device/xiaomi/polaris" name="notsyncing/android_device_xiaomi_polaris" remote="github" revision="android-8.1" />
 ```
 
@@ -45,43 +71,13 @@ Finally execute these:
 export ALLOW_MISSING_DEPENDENCIES=true
 . build/envsetup.sh
 lunch omni_polaris-eng 
-make adbd recoveryimage -j8
+mka recoveryimage
 ```
 
 To test it:
 
 ```
 fastboot boot out/target/product/polaris/recovery.img
-```
-
-## Troubleshooting
-
-### When compile: "flex-2.5.39: loadlocale.c:130:_nl_intern_locale_data: ?? 'cnt < (sizeof (_nl_value_type_LC_TIME) / sizeof (_nl_value_type_LC_TIME[0]))' ???"
-
-Execute this:
-
-```
-export LC_ALL=C
-```
-
-Then recompile.
-
-### Wrong theme color in TWRP (orange/yellow color instead of blue)
-
-Replace bootable/recovery/minuitwrp/graphics_drm.cpp, line 162-164:
-
-```cpp
-format = DRM_FORMAT_RGB565;
-base_format = GGL_PIXEL_FORMAT_BGRA_8888;
-printf("setting DRM_FORMAT_RGB565 and GGL_PIXEL_FORMAT_RGB_565\n");
-```
-
-to
-
-```cpp
-format = DRM_FORMAT_XBGR8888;
-base_format = GGL_PIXEL_FORMAT_RGBX_8888;
-printf("setting DRM_FORMAT_XBGR8888 and GGL_PIXEL_FORMAT_RGBX_8888\n");
 ```
 
 ## Thanks
