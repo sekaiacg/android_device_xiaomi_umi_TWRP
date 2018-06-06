@@ -48,7 +48,6 @@ Works:
 Not (fully) works:
 
 - No vibration on touch
-- [commit 34ad728823b186f93016387f39388cdbde35b3ed makes it stuck in blank screen on boot](https://github.com/omnirom/android_bootable_recovery/issues/219)
 
 ## Compile
 
