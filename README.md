@@ -47,6 +47,10 @@ Works:
 - Vibration on touch (see https://gerrit.omnirom.org/#/c/android_bootable_recovery/+/31021/)
 - Correct screenshot color (see https://gerrit.omnirom.org/#/c/android_bootable_recovery/+/31042/)
 
+Not (fully) works:
+
+- Randomly freeze or crash with MTP enabled. If you encountered this, please use `TW_EXCLUDE_MTP := true` to disable MTP and recompile.
+
 ## Compile
 
 First checkout minimal twrp with omnirom tree:
