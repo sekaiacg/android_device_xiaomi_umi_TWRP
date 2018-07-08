@@ -25,9 +25,6 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-on early-init
-    mkdir /firmware 0771 system system
-
 on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
@@ -37,10 +34,8 @@ on fs
     chown system system /dev/ion
     install_keyring
 
-    # Mount firmware
-    mount vfat /dev/block/bootdevice/by-name/modem /firmware ro shortname=lower uid=1000 gid=1000 dmask=227 fmask=337
-
-    # Only needed when we don't include all required blobs for crypto
+on init
+    start hwservicemanager
     start prepdecrypt
     #setprop crypto.ready 1
 
@@ -78,6 +73,7 @@ service keystore_auth /sbin/keystore_auth
     disabled
     seclabel u:r:recovery:s0
 
+# keystore is started and stopped on demand by TWRP
 service keystore /sbin/keystore /tmp/misc/keystore
     user root
     group root drmrpc readproc
@@ -97,11 +93,7 @@ service keymaster-3-0 /sbin/android.hardware.keymaster@3.0-service-qti
     seclabel u:r:recovery:s0
 
 on boot
-    # Workaround for adb not coming up
-    setprop sys.usb.config mtp,adb
     setprop sys.usb.config adb
-    setprop sys.usb.configs 1
-    
     # Enable OTG
     write /sys/devices/soc/800f000.qcom,spmi/spmi-0/spmi0-02/800f000.qcom,spmi:qcom,pmi8998@2:qcom,qpnp-smb2/power_supply/usb/otg_switch 1
 
@@ -109,15 +101,12 @@ on property:crypto.ready=0
     stop sbinqseecomd
     stop keymaster-3-0
     stop gatekeeper-1-0
-    stop hwservicemanager
-    stop keystore
     stop servicemanager
 
 on property:crypto.ready=1
     start sbinqseecomd
 
 on property:sys.listeners.registered=true
-    start hwservicemanager
     start keymaster-3-0
     start gatekeeper-1-0
     start servicemanager
