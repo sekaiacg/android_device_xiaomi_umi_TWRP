@@ -79,3 +79,5 @@ fastboot boot out/target/product/polaris/recovery.img
 - @travismills82 for his TWRP tree used as skeleton: [twrp_android_device_samsung_star2qltechn](https://github.com/travismills82/twrp_android_device_samsung_star2qltechn)
 
 - @TeamWin for sagit TWRP tree used for partial decryption works: [android_device_xiaomi_sagit](https://github.com/TeamWin/android_device_xiaomi_sagit)
+
+- @simonsmh for various fixes
