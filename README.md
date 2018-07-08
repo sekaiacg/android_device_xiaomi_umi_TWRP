@@ -5,12 +5,6 @@ TWRP device tree for Xiaomi MIX 2S
 
 Kernel and all blobs are extracted from miui_MIMIX2S_V9.5.12.0.ODGCNFA_28e7b5cf2e_8.0 firmware.
 
-To compile
-
-```bash
-. build/envsetup.sh && lunch omni_polaris-eng && mka recoveryimage
-```
-
 The Xiaomi Mi MIX 2S (codenamed _"polaris"_) are high-end smartphones from Xiaomi.
 
 Xiaomi Mi MIX 2S was announced and released in April 2018.
@@ -69,10 +63,9 @@ Then add these projects to .repo/manifest.xml:
 Finally execute these:
 
 ```
-export ALLOW_MISSING_DEPENDENCIES=true
 . build/envsetup.sh
 lunch omni_polaris-eng 
-mka recoveryimage
+mka recoveryimage ALLOW_MISSING_DEPENDENCIES=true # Only if you use minimal twrp tree.
 ```
 
 To test it:
@@ -86,6 +79,3 @@ fastboot boot out/target/product/polaris/recovery.img
 - @travismills82 for his TWRP tree used as skeleton: [twrp_android_device_samsung_star2qltechn](https://github.com/travismills82/twrp_android_device_samsung_star2qltechn)
 
 - @TeamWin for sagit TWRP tree used for partial decryption works: [android_device_xiaomi_sagit](https://github.com/TeamWin/android_device_xiaomi_sagit)
-
-- 宅科技_zecoki (or wx_pmZ7777t in the inner link), used for ADB works: [	
-[Recovery] 小米 MIX2s TWRP recovery下载](https://blog.csdn.net/u010880477/article/details/80285813)
