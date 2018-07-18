@@ -1,8 +1,26 @@
-# Inherit from the common Open Source product configuration
-$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk) # If you are building for a phone
+#
+# Copyright 2017 The Android Open Source Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
 
-# Inherit from those products. Most specific first.
-#$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)  # If you are building for a tablet
+# Release name
+PRODUCT_RELEASE_NAME := polaris
+
+$(call inherit-product, build/target/product/embedded.mk)
+
+# Inherit from our custom product configuration
+$(call inherit-product, vendor/omni/config/common.mk)
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_NAME := omni_polaris
@@ -11,20 +29,9 @@ PRODUCT_BRAND := Xiaomi
 PRODUCT_MODEL := MI MIX 2S
 PRODUCT_MANUFACTURER := Xiaomi
 
-# If needed to overide these props
-PRODUCT_BUILD_PROP_OVERRIDES += \
-    BUILD_FINGERPRINT="Xiaomi/polaris/polaris:8.0.0/OPR1.170623.032/V9.5.12.0.ODGCNFA:user/release-keys" \
-    PRIVATE_BUILD_DESC="polaris-user 8.0.0 OPR1.170623.032 V9.5.12.0.ODGCNFA release-keys"
-    
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    ro.treble.enabled=true \
-    sys.usb.controller=a600000.dwc3 \
-    persist.sys.usb.config=mtp \
-    persist.service.adb.enable=1 \
-    persist.service.debuggable=1 \
-    sys.usb.rndis.func.name=gsi \
-    sys.usb.rmnet.func.name=gsi
-
 TARGET_VENDOR_PRODUCT_NAME := polaris
 TARGET_VENDOR_DEVICE_NAME := polaris
-PRODUCT_BUILD_PROP_OVERRIDES += TARGET_DEVICE=polaris PRODUCT_NAME=polaris
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    TARGET_DEVICE=polaris \
+    BUILD_PRODUCT=polaris \
+    PRODUCT_NAME=polaris

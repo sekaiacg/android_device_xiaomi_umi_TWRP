@@ -870,6 +870,15 @@
         </interface>
     </hal>
     <hal format="hidl">
+        <name>vendor.xiaomi.hardware.tpdbg</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>ITpdbg</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
         <name>vendor.xiaomi.hardware.vsimapp</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
