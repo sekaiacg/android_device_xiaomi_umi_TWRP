@@ -36,8 +36,8 @@ on fs
 
 on init
     start hwservicemanager
-    start prepdecrypt
-    #setprop crypto.ready 1
+    #start prepdecrypt
+    setprop crypto.ready 1
 
 service prepdecrypt /sbin/prepdecrypt.sh
     oneshot
@@ -94,8 +94,6 @@ service keymaster-3-0 /sbin/android.hardware.keymaster@3.0-service-qti
 
 on boot
     setprop sys.usb.config adb
-    # Enable OTG
-    write /sys/devices/soc/800f000.qcom,spmi/spmi-0/spmi0-02/800f000.qcom,spmi:qcom,pmi8998@2:qcom,qpnp-smb2/power_supply/usb/otg_switch 1
 
 on property:crypto.ready=0
     stop sbinqseecomd

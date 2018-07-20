@@ -3,7 +3,7 @@ For building TWRP for Xiaomi Mi MIX 2S
 
 TWRP device tree for Xiaomi MIX 2S
 
-Kernel and all blobs are extracted from miui_MIMIX2S_V9.5.12.0.ODGCNFA_28e7b5cf2e_8.0 firmware.
+Kernel and all blobs are extracted from miui_MIMIX2S_8.7.19_38ad694ba7_8.0.zip firmware.
 
 The Xiaomi Mi MIX 2S (codenamed _"polaris"_) are high-end smartphones from Xiaomi.
 
@@ -73,6 +73,9 @@ To test it:
 ```
 fastboot boot out/target/product/polaris/recovery.img
 ```
+## Contributors
+
+[Here](https://github.com/notsyncing/android_device_xiaomi_polaris/graphs/contributors)
 
 ## Thanks
 
@@ -80,4 +83,6 @@ fastboot boot out/target/product/polaris/recovery.img
 
 - @TeamWin for sagit TWRP tree used for partial decryption works: [android_device_xiaomi_sagit](https://github.com/TeamWin/android_device_xiaomi_sagit)
 
-- @simonsmh for various fixes
+- @timesleader for dipper TWRP tree used for adb works:[android_device_xiaomi_dipper](https://github.com/timesleader/android_device_xiaomi_dipper)
+
+- @wuxianlin for enchilada TWRP tree used for init.rc works:[android_device_oneplus_enchilada](https://github.com/TeamWin/android_device_oneplus_enchilada)

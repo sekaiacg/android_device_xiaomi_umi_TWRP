@@ -127,7 +127,6 @@
 /dev/sp_kernel            0660   system     system
 /dev/sp_ssr               0660   system     system
 /dev/sp_keymaster         0660   system     system
-/dev/sec_nvm_*            0660   system     system
 /dev/cryptoapp            0660   system     system
 /dev/gemini0              0660   system     camera
 /dev/jpeg0                0660   system     camera
@@ -137,10 +136,6 @@
 /dev/adsprpc-smd          0664   system     system
 /dev/system_health_monitor 0644  radio      system
 /dev/mdss_rotator         0664   system     system
-
-#QDSS
-/dev/byte-cntr            0660   system    oem_2902
-
 # wlan
 /dev/wcnss_wlan           0660   system     system
 /dev/wcnss_ctrl           0660   system     system
@@ -209,7 +204,6 @@
 /dev/tsc_ci0              0660   media       media
 
 # sensors
-/dev/sensors              0660   system     system
 /sys/devices/i2c-12/12-*  pollrate_ms 0664 system system
 /sys/devices/f9925000.i2c/i2c-0/0-*                 enable         0660    input    system
 /sys/devices/f9925000.i2c/i2c-0/0-*                 poll_delay     0660    input    system

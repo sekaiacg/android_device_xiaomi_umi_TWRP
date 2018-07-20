@@ -3,9 +3,11 @@
 /cache         ext4   /dev/block/bootdevice/by-name/cache
 /recovery      emmc   /dev/block/bootdevice/by-name/recovery                     flags=backup=1
 /system        ext4   /dev/block/bootdevice/by-name/system
-/vendor        ext4   /dev/block/bootdevice/by-name/vendor                       flags=backup=1;display="Vendor";flashimg=1
+/vendor        ext4   /dev/block/bootdevice/by-name/vendor                       flags=backup=1;display="Vendor"
 
 /system_image  emmc   /dev/block/bootdevice/by-name/system
+/vendor_image  emmc   /dev/block/bootdevice/by-name/vendor
+
 /data          ext4   /dev/block/bootdevice/by-name/userdata                     flags=encryptable=footer;length=-16384
 /firmware      vfat   /dev/block/bootdevice/by-name/modem                        flags=display="Firmware";mounttodecrypt
 /cust          ext4   /dev/block/bootdevice/by-name/cust                         flags=display="Cust"
