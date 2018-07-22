@@ -16,7 +16,7 @@ Xiaomi Mi MIX 2S was announced and released in April 2018.
 | SoC          | Qualcomm SDM845 Snapdragon 845                  |
 | CPU          | 8x Qualcomm® Kryo™ 385 up to 2.8GHz             |
 | GPU          | Adreno 630                                      |
-| Memory       | 6GB / 8GM RAM (LPDDR4X)                         |
+| Memory       | 6GB / 8GB RAM (LPDDR4X)                         |
 | Shipped Android version | 8.0                                  |
 | Storage      | 64GB / 128GB / 256GB UFS 2.1 flash storage      |
 | Battery      | Non-removable Li-Po 3400 mAh                    |
