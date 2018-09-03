@@ -3,7 +3,7 @@ For building TWRP for Xiaomi Mi MIX 2S
 
 TWRP device tree for Xiaomi MIX 2S
 
-Kernel and all blobs are extracted from miui_MIMIX2S_8.7.19_38ad694ba7_8.0.zip firmware.
+Kernel and all blobs are extracted from miui_MIMIX2S_8.8.31_d0859b7cdb_9.0.zip firmware.
 
 The Xiaomi Mi MIX 2S (codenamed _"polaris"_) are high-end smartphones from Xiaomi.
 
