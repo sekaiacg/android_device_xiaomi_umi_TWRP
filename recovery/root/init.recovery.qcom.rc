@@ -35,6 +35,12 @@ on fs
     install_keyring
 
 on init
+    mkdir /system/bin
+    mkdir /system/etc
+    symlink /system/etc /etc
+    symlink /sbin/busybox /system/bin/sh
+    symlink /vendor/manifest.xml /system/manifest.xml
+
     start hwservicemanager
     #start prepdecrypt
     setprop crypto.ready 1
@@ -104,13 +110,15 @@ on boot
 on property:crypto.ready=0
     stop sbinqseecomd
     stop keymaster-3-0
+    stop keymaster-4-0
     stop gatekeeper-1-0
     stop servicemanager
 
 on property:crypto.ready=1
     start sbinqseecomd
 
-on property:sys.listeners.registered=true
+on property:vendor.sys.listeners.registered=true
     start keymaster-3-0
+    start keymaster-4-0
     start gatekeeper-1-0
     start servicemanager
