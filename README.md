@@ -35,7 +35,7 @@ Xiaomi Mi MIX 2S was announced and released in April 2018.
 Works:
 
 - ADB
-- Decryption of /data
+- Decryption of /data (Need this patch: https://gist.github.com/notsyncing/4ea00031c612b55ddc88eefaa715357f)
 - Screen brightness settings
 - Now UI is very smooth (thanks to TWRP fix 16d831bee5a660f5ac6da0d8fff2b3ec4697d663)
 - Vibration on touch (see https://gerrit.omnirom.org/#/c/android_bootable_recovery/+/31021/)
