@@ -62,12 +62,12 @@
     <hal format="hidl">
         <name>android.hardware.configstore</name>
         <transport>hwbinder</transport>
-        <version>1.0</version>
+        <version>1.1</version>
         <interface>
             <name>ISurfaceFlingerConfigs</name>
             <instance>default</instance>
         </interface>
-        <fqname>@1.0::ISurfaceFlingerConfigs/default</fqname>
+        <fqname>@1.1::ISurfaceFlingerConfigs/default</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.contexthub</name>
@@ -117,6 +117,7 @@
             <instance>default</instance>
         </interface>
         <fqname>@1.0::IGnss/default</fqname>
+        <fqname>@1.0::IGnss/gnss_vendor</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.graphics.allocator</name>
@@ -353,24 +354,14 @@
         <fqname>@1.0::IVibrator/default</fqname>
     </hal>
     <hal format="hidl">
-        <name>android.hardware.vr</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IVr</name>
-            <instance>default</instance>
-        </interface>
-        <fqname>@1.0::IVr/default</fqname>
-    </hal>
-    <hal format="hidl">
         <name>android.hardware.wifi</name>
         <transport>hwbinder</transport>
-        <version>1.0</version>
+        <version>1.2</version>
         <interface>
             <name>IWifi</name>
             <instance>default</instance>
         </interface>
-        <fqname>@1.0::IWifi/default</fqname>
+        <fqname>@1.2::IWifi/default</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.wifi.hostapd</name>
@@ -383,24 +374,14 @@
         <fqname>@1.0::IHostapd/default</fqname>
     </hal>
     <hal format="hidl">
-        <name>android.hardware.wifi.offload</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IOffload</name>
-            <instance>default</instance>
-        </interface>
-        <fqname>@1.0::IOffload/default</fqname>
-    </hal>
-    <hal format="hidl">
         <name>android.hardware.wifi.supplicant</name>
         <transport>hwbinder</transport>
-        <version>1.0</version>
+        <version>1.1</version>
         <interface>
             <name>ISupplicant</name>
             <instance>default</instance>
         </interface>
-        <fqname>@1.0::ISupplicant/default</fqname>
+        <fqname>@1.1::ISupplicant/default</fqname>
     </hal>
     <hal format="hidl">
         <name>com.fingerprints.extension</name>
@@ -441,16 +422,6 @@
         <fqname>@1.0::IFingerprintRecalibration/default</fqname>
         <fqname>@1.0::IFingerprintSenseTouch/default</fqname>
         <fqname>@1.0::IFingerprintSensorTest/default</fqname>
-    </hal>
-    <hal format="hidl">
-        <name>com.qualcomm.qti.ant</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IAntHci</name>
-            <instance>default</instance>
-        </interface>
-        <fqname>@1.0::IAntHci/default</fqname>
     </hal>
     <hal format="hidl">
         <name>com.qualcomm.qti.bluetooth_audio</name>
@@ -530,22 +501,22 @@
     <hal format="hidl">
         <name>vendor.display.color</name>
         <transport>hwbinder</transport>
-        <version>1.1</version>
+        <version>1.2</version>
         <interface>
             <name>IDisplayColor</name>
             <instance>default</instance>
         </interface>
-        <fqname>@1.1::IDisplayColor/default</fqname>
+        <fqname>@1.2::IDisplayColor/default</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.display.config</name>
         <transport>hwbinder</transport>
-        <version>1.1</version>
+        <version>1.2</version>
         <interface>
             <name>IDisplayConfig</name>
             <instance>default</instance>
         </interface>
-        <fqname>@1.1::IDisplayConfig/default</fqname>
+        <fqname>@1.2::IDisplayConfig/default</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.display.postproc</name>
@@ -601,6 +572,16 @@
             <instance>default</instance>
         </interface>
         <fqname>@1.0::INqNfc/default</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.nxp.nxpnfc</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>INxpNfc</name>
+            <instance>default</instance>
+        </interface>
+        <fqname>@1.0::INxpNfc/default</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.qti.data.factory</name>
@@ -673,16 +654,6 @@
         <fqname>@1.0::IFactory/default</fqname>
     </hal>
     <hal format="hidl">
-        <name>vendor.qti.hardware.fm</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IFmHci</name>
-            <instance>default</instance>
-        </interface>
-        <fqname>@1.0::IFmHci/default</fqname>
-    </hal>
-    <hal format="hidl">
         <name>vendor.qti.hardware.iop</name>
         <transport>hwbinder</transport>
         <version>2.0</version>
@@ -742,14 +713,14 @@
     <hal format="hidl">
         <name>vendor.qti.hardware.radio.ims</name>
         <transport>hwbinder</transport>
-        <version>1.2</version>
+        <version>1.3</version>
         <interface>
             <name>IImsRadio</name>
             <instance>imsradio0</instance>
             <instance>imsradio1</instance>
         </interface>
-        <fqname>@1.2::IImsRadio/imsradio0</fqname>
-        <fqname>@1.2::IImsRadio/imsradio1</fqname>
+        <fqname>@1.3::IImsRadio/imsradio0</fqname>
+        <fqname>@1.3::IImsRadio/imsradio1</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.qti.hardware.radio.lpa</name>
@@ -788,16 +759,28 @@
         <fqname>@1.0::IQtiRadio/slot2</fqname>
     </hal>
     <hal format="hidl">
+        <name>vendor.qti.hardware.radio.qtiradio</name>
+        <transport>hwbinder</transport>
+        <version>2.0</version>
+        <interface>
+            <name>IQtiRadio</name>
+            <instance>slot1</instance>
+            <instance>slot2</instance>
+        </interface>
+        <fqname>@2.0::IQtiRadio/slot1</fqname>
+        <fqname>@2.0::IQtiRadio/slot2</fqname>
+    </hal>
+    <hal format="hidl">
         <name>vendor.qti.hardware.radio.uim</name>
         <transport>hwbinder</transport>
-        <version>1.0</version>
+        <version>1.1</version>
         <interface>
             <name>IUim</name>
             <instance>Uim0</instance>
             <instance>Uim1</instance>
         </interface>
-        <fqname>@1.0::IUim/Uim0</fqname>
-        <fqname>@1.0::IUim/Uim1</fqname>
+        <fqname>@1.1::IUim/Uim0</fqname>
+        <fqname>@1.1::IUim/Uim1</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.qti.hardware.radio.uim_remote_client</name>
@@ -974,6 +957,16 @@
         <fqname>@1.0::IDisplayFeature/default</fqname>
     </hal>
     <hal format="hidl">
+        <name>vendor.xiaomi.hardware.fingerprintextension</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IXiaomiFingerprint</name>
+            <instance>default</instance>
+        </interface>
+        <fqname>@1.0::IXiaomiFingerprint/default</fqname>
+    </hal>
+    <hal format="hidl">
         <name>vendor.xiaomi.hardware.mfidoca</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
@@ -986,12 +979,12 @@
     <hal format="hidl">
         <name>vendor.xiaomi.hardware.mlipay</name>
         <transport>hwbinder</transport>
-        <version>1.0</version>
+        <version>1.1</version>
         <interface>
             <name>IMlipayService</name>
             <instance>default</instance>
         </interface>
-        <fqname>@1.0::IMlipayService/default</fqname>
+        <fqname>@1.1::IMlipayService/default</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.xiaomi.hardware.mtdservice</name>
@@ -1006,12 +999,12 @@
     <hal format="hidl">
         <name>vendor.xiaomi.hardware.tidaservice</name>
         <transport>hwbinder</transport>
-        <version>1.0</version>
+        <version>1.1</version>
         <interface>
             <name>ITidaService</name>
             <instance>default</instance>
         </interface>
-        <fqname>@1.0::ITidaService/default</fqname>
+        <fqname>@1.1::ITidaService/default</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.xiaomi.hardware.vsimapp</name>
