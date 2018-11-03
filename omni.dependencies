@@ -4,5 +4,11 @@
     "repository": "TeamWin/android_device_qcom_common",
     "target_path": "device/qcom/common",
     "revision":"android-8.0"
+  },
+  {
+    "remote":"github",
+    "repository": "LineageOS/android_kernel_xiaomi_sdm845",
+    "target_path": "kernel/xiaomi/sdm845",
+    "revision":"lineage-16.0"
   }
 ]
