@@ -35,15 +35,15 @@ Xiaomi Mi MIX 2S was announced and released in April 2018.
 Works:
 
 - ADB
-- Decryption of /data (Need this patch: https://gist.github.com/notsyncing/4ea00031c612b55ddc88eefaa715357f)
+- Decryption of /data `fc1335025b030d58a82155c9ebd4cb98ccb56508`
 - Screen brightness settings
-- Now UI is very smooth (thanks to TWRP fix 16d831bee5a660f5ac6da0d8fff2b3ec4697d663)
-- Vibration on touch (see https://gerrit.omnirom.org/#/c/android_bootable_recovery/+/31021/)
-- Correct screenshot color (see https://gerrit.omnirom.org/#/c/android_bootable_recovery/+/31042/)
+- Now UI is very smooth `16d831bee5a660f5ac6da0d8fff2b3ec4697d663`
+- Vibration on touch `c7c78d2fea4e9a53da09657ccb4155ec1344bd03`
+- Correct screenshot color `8e4e8ec2f9890db53a6ecd1fa99fb73385271831`
 
-Not (fully) works:
+Not Working:
 
-- Randomly freeze or crash with MTP enabled. If you encountered this, please use `TW_EXCLUDE_MTP := true` to disable MTP and recompile.
+- MTP FFS `d97d43360f6b9d3b9b6861b5566e85726a13109b`
 
 ## Compile
 
@@ -57,14 +57,14 @@ repo sync
 Then add these projects to .repo/manifest.xml:
 
 ```xml
-<project path="device/xiaomi/polaris" name="notsyncing/android_device_xiaomi_polaris" remote="github" revision="android-9.0" />
+<project path="device/xiaomi/polaris" name="TeamWin/android_device_xiaomi_polaris" remote="github" revision="android-9.0" />
 ```
 
 Finally execute these:
 
 ```
 . build/envsetup.sh
-lunch omni_polaris-eng 
+lunch omni_polaris-eng
 mka recoveryimage ALLOW_MISSING_DEPENDENCIES=true # Only if you use minimal twrp tree.
 ```
 
@@ -75,7 +75,7 @@ fastboot boot out/target/product/polaris/recovery.img
 ```
 ## Contributors
 
-[Here](https://github.com/notsyncing/android_device_xiaomi_polaris/graphs/contributors)
+[Here](https://github.com/TeamWin/android_device_xiaomi_polaris/graphs/contributors)
 
 ## Thanks
 
