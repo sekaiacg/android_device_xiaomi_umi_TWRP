@@ -15,7 +15,7 @@
 #
 
 # Release name
-PRODUCT_RELEASE_NAME := perseus
+PRODUCT_RELEASE_NAME := cepheus
 
 $(call inherit-product, build/target/product/embedded.mk)
 
@@ -23,15 +23,15 @@ $(call inherit-product, build/target/product/embedded.mk)
 $(call inherit-product, vendor/omni/config/common.mk)
 
 ## Device identifier. This must come after all inclusions
-PRODUCT_NAME := omni_perseus
-PRODUCT_DEVICE := perseus
+PRODUCT_NAME := omni_cepheus
+PRODUCT_DEVICE := cepheus
 PRODUCT_BRAND := Xiaomi
-PRODUCT_MODEL := Mi MIX 3
+PRODUCT_MODEL := MI 9
 PRODUCT_MANUFACTURER := Xiaomi
 
-TARGET_VENDOR_PRODUCT_NAME := perseus
-TARGET_VENDOR_DEVICE_NAME := perseus
+TARGET_VENDOR_PRODUCT_NAME := cepheus
+TARGET_VENDOR_DEVICE_NAME := cepheus
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    TARGET_DEVICE=perseus \
-    BUILD_PRODUCT=perseus \
-    PRODUCT_NAME=perseus
+    TARGET_DEVICE=cepheus \
+    BUILD_PRODUCT=cepheus \
+    PRODUCT_NAME=cepheus

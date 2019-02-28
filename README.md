@@ -1,7 +1,7 @@
-# android_device_xiaomi_perseus
-For building TWRP for Xiaomi Mi MIX 3
+# android_device_xiaomi_cepheus
+For building TWRP for Xiaomi Mi 9
 
-TWRP device tree for Xiaomi Mi MIX 3
+TWRP device tree for Xiaomi Mi 9
 
 ## Features
 
@@ -25,25 +25,22 @@ repo sync
 Then add these projects to .repo/manifest.xml:
 
 ```xml
-<project path="device/xiaomi/perseus" name="mauronofrio/android_device_xiaomi_perseus" remote="github" revision="android-9.0" />
+<project path="device/xiaomi/cepheus" name="mauronofrio/android_device_xiaomi_cepheus" remote="github" revision="android-9.0" />
 ```
 
 Finally execute these:
 
 ```
 . build/envsetup.sh
-lunch omni_perseus-eng
+lunch omni_cepheus-eng
 mka recoveryimage ALLOW_MISSING_DEPENDENCIES=true # Only if you use minimal twrp tree.
 ```
 
 To test it:
 
 ```
-fastboot boot out/target/product/perseus/recovery.img
+fastboot boot out/target/product/cepheus/recovery.img
 ```
-## Contributors
-
-[Here](https://github.com/TeamWin/android_device_xiaomi_perseus/graphs/contributors)
 
 ## Other Sources
 
