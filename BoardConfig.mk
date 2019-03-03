@@ -86,6 +86,7 @@ TARGET_OTA_ASSERT_DEVICE := cepheus
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_USES_METADATA_PARTITION := true
+TARGET_RECOVERY_FSTAB := device/xiaomi/cepheus/fstab.hardware
 
 # Android Verified Boot
 BOARD_AVB_ENABLE := false
