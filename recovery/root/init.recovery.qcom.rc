@@ -38,12 +38,11 @@ on init
     mkdir /system/bin
     mkdir /system/etc
     symlink /system/etc /etc
-    symlink /sbin/busybox /system/bin/sh
+#    symlink /sbin/busybox /system/bin/sh
     symlink /vendor/manifest.xml /system/manifest.xml
-
+    start prepdecrypt
     start hwservicemanager
-    #start prepdecrypt
-    setprop crypto.ready 1
+
 
 service prepdecrypt /sbin/prepdecrypt.sh
     oneshot
@@ -102,14 +101,24 @@ service keymaster-4-0 /sbin/android.hardware.keymaster@4.0-service-qti
 on boot
     setprop sys.usb.config adb
 
+on property:prep.decrypt=1
+    start sbinqseecomd
+    start hwservicemanager
+    start servicemanager
+    start keymaster-4-0
+	
 on property:crypto.ready=0
     stop sbinqseecomd
     stop keymaster-4-0
     stop gatekeeper-1-0
     stop servicemanager
-
+	
 on property:crypto.ready=1
     start sbinqseecomd
+	start hwservicemanager
+	start servicemanager
+	start keymaster-4-0
+    start gatekeeper-1-0
 
 on property:vendor.sys.listeners.registered=true
     start keymaster-4-0
