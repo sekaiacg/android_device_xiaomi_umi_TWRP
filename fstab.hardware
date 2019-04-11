@@ -29,7 +29,7 @@
 
 #device         mount point      fstype        [device2] [length=]
 
-/dev/block/bootdevice/by-name/system       /               ext4    ro,barrier=1                                                    wait,avb
+/dev/block/bootdevice/by-name/system       /system         ext4    ro,barrier=1                                                    wait,avb
 /dev/block/bootdevice/by-name/metadata     /metadata       ext4    noatime,nosuid,nodev,data=ordered                               wait,check,formattable
 /dev/block/bootdevice/by-name/cust         /cust           ext4    ro,nosuid,nodev,barrier=1,data=ordered                          wait,check
 /dev/block/bootdevice/by-name/vendor       /vendor         ext4    ro,barrier=1                                                    wait,avb
@@ -39,3 +39,4 @@
 /dev/block/bootdevice/by-name/boot         /boot           emmc    defaults                                                        defaults
 /dev/block/bootdevice/by-name/recovery     /recovery       emmc    defaults                                                        defaults
 /dev/block/bootdevice/by-name/misc         /misc           emmc    defaults                                                        defaults
+/dev/block/bootdevice/by-name/persist      /persist        ext4    
