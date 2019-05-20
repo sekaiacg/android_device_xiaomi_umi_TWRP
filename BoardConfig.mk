@@ -41,7 +41,7 @@ ENABLE_CPUSETS := true
 ENABLE_SCHEDBOOST := true
 
 # Bootloader
-TARGET_BOOTLOADER_BOARD_NAME := sm8150
+TARGET_BOOTLOADER_BOARD_NAME := msmnile
 TARGET_NO_BOOTLOADER := true
 TARGET_USES_UEFI := true
 
@@ -57,10 +57,10 @@ NEED_KERNEL_MODULE_SYSTEM := true
 TARGET_KERNEL_ARCH := arm64
 #TARGET_KERNEL_CONFIG := cepheus_defconfig
 #TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
-#TARGET_KERNEL_SOURCE := kernel/xiaomi/sm8150
+#TARGET_KERNEL_SOURCE := kernel/xiaomi/msmnile
 
 # Platform
-TARGET_BOARD_PLATFORM := sm8150
+TARGET_BOARD_PLATFORM := msmnile
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno640
 
 # Partitions
@@ -95,6 +95,7 @@ BOARD_BUILD_DISABLED_VBMETAIMAGE := true
 # Crypto
 TW_INCLUDE_CRYPTO := true
 TW_INCLUDE_FBE := true
+TW_INCLUDE_FBE_METADATA_DECRYPT := true
 
 # TWRP specific build flags
 TW_THEME := portrait_hdpi
