@@ -95,7 +95,9 @@ BOARD_BUILD_DISABLED_VBMETAIMAGE := true
 # Crypto
 TW_INCLUDE_CRYPTO := true
 TW_INCLUDE_FBE := true
-TW_INCLUDE_FBE_METADATA_DECRYPT := true
+TARGET_HW_DISK_ENCRYPTION := true
+TARGET_CRYPTFS_HW_PATH := device/qcom/common/cryptfs_hw
+#TW_INCLUDE_FBE_METADATA_DECRYPT := true
 
 # TWRP specific build flags
 TW_THEME := portrait_hdpi
