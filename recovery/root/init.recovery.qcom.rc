@@ -28,6 +28,7 @@
 on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
+    export ANDROID_ROOT /system_root
     chmod 0660 /dev/qseecom
     chown system drmrpc /dev/qseecom
     chmod 0664 /dev/ion
@@ -38,24 +39,24 @@ on init
     mkdir /system/bin
     mkdir /system/etc
     symlink /system/etc /etc
-#    symlink /sbin/busybox /system/bin/sh
+    symlink /sbin/busybox /system/bin/sh
     symlink /vendor/manifest.xml /system/manifest.xml
-    start prepdecrypt
+
     start hwservicemanager
-
-
-service prepdecrypt /sbin/prepdecrypt.sh
-    oneshot
-    user root
-    group root
-    disabled
-    seclabel u:r:recovery:s0
+    start predecrypt
 
 # Separate copy needed to use /sbin/linker64 instead of /system/bin/linker64
 service sbinqseecomd /sbin/qseecomd
     user root
     group root
     disabled
+    seclabel u:r:recovery:s0
+
+service predecrypt /sbin/predecrypt.sh
+    oneshot
+    disabled
+    user root
+    group root
     seclabel u:r:recovery:s0
 
 service hwservicemanager /sbin/hwservicemanager
@@ -91,40 +92,23 @@ service gatekeeper-1-0 /sbin/android.hardware.gatekeeper@1.0-service-qti
     disabled
     seclabel u:r:recovery:s0
 
-
 service keymaster-4-0 /sbin/android.hardware.keymaster@4.0-service-qti
     user root
     group root
     disabled
     seclabel u:r:recovery:s0
 
-# This helps fix ld.config.txt errors from the linker on Android 8.1+
-service ldconfigtxt /sbin/touch /sbin/ld.config.txt
-    oneshot
-    seclabel u:r:recovery:s0
-
 on boot
-	export LD_CONFIG_FILE /sbin/ld.config.txt
     setprop sys.usb.config adb
 
-on property:prep.decrypt=1
-    start sbinqseecomd
-    start hwservicemanager
-    start servicemanager
-    start keymaster-4-0
-	
 on property:crypto.ready=0
     stop sbinqseecomd
     stop keymaster-4-0
     stop gatekeeper-1-0
     stop servicemanager
-	
+
 on property:crypto.ready=1
     start sbinqseecomd
-	start hwservicemanager
-	start servicemanager
-	start keymaster-4-0
-    start gatekeeper-1-0
 
 on property:vendor.sys.listeners.registered=true
     start keymaster-4-0

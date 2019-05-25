@@ -8,7 +8,7 @@ TWRP device tree for Xiaomi Mi 9
 Works:
 
 - ADB
-- Decryption of /data
+- Decryption of /data (Only if pattern or pin or password is not setted)
 - Screen brightness settings
 - Vibration on touch 
 - Correct screenshot color 
@@ -44,8 +44,8 @@ fastboot boot out/target/product/cepheus/recovery.img
 
 ## Other Sources
 
-Kernel Sources: 
+Kernel Sources: using precompiled stock kernel
 
 ## Thanks
 
-- Thanks to @notsyncing for the base: https://github.com/notsyncing/android_device_xiaomi_polaris
+- Thanks to @PeterCxy for the commits and the base: https://github.com/PeterCxy/android_device_xiaomi_violet-twrp
