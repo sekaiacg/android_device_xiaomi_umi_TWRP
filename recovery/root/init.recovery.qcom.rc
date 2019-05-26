@@ -52,13 +52,6 @@ service sbinqseecomd /sbin/qseecomd
     disabled
     seclabel u:r:recovery:s0
 
-service predecrypt /sbin/predecrypt.sh
-    oneshot
-    disabled
-    user root
-    group root
-    seclabel u:r:recovery:s0
-
 service hwservicemanager /sbin/hwservicemanager
     user root
     group root
