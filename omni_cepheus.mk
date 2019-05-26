@@ -29,3 +29,7 @@ PRODUCT_BRAND := Xiaomi
 PRODUCT_MODEL := Xiaomi Mi 9
 PRODUCT_MANUFACTURER := Xiaomi
 
+# HACK: Set vendor patch level
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.build.security_patch=2099-12-31
+

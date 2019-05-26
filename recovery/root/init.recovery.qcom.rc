@@ -43,7 +43,7 @@ on init
     symlink /vendor/manifest.xml /system/manifest.xml
 
     start hwservicemanager
-    start predecrypt
+    setprop crypto.ready 1
 
 # Separate copy needed to use /sbin/linker64 instead of /system/bin/linker64
 service sbinqseecomd /sbin/qseecomd
