@@ -4,6 +4,7 @@
 
 # mount point  fstype device                             device2              flags
 /boot          emmc    /dev/block/bootdevice/by-name/boot
+/dtbo          emmc   /dev/block/bootdevice/by-name/dtbo                         flags=backup=1;display="Dtbo";flashimg=1
 /cache         ext4    /dev/block/bootdevice/by-name/cache
 /recovery      emmc    /dev/block/bootdevice/by-name/recovery                    flags=backup=1
 /system_root   ext4    /dev/block/bootdevice/by-name/system                      flags=display="System";backup=0
