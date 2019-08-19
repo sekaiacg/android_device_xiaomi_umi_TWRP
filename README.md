@@ -8,14 +8,14 @@ TWRP device tree for Xiaomi Mi 9
 Works:
 
 - ADB
-- Decryption of /data (Only if pattern or pin or password is not setted)
+- Decryption of /data
 - Screen brightness settings
 - Correct screenshot color
 - MTP
 - Flashing (opengapps, roms, images and so on)
 - Backup/Restore (Needs more testing)
 - USB OTG
-
+- Android Q Support
 
 TO-DO:
 
