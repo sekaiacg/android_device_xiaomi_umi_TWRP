@@ -52,8 +52,9 @@ fastboot boot out/target/product/cepheus/recovery.img
 
 ## Other Sources
 
-Kernel Sources: using precompiled stock kernel
+https://github.com/mauronofrio/Xiaomi_Kernel_OpenSource
 
 ## Thanks
 
 - Thanks to @PeterCxy for the commits and the base: https://github.com/PeterCxy/android_device_xiaomi_violet-twrp
+- Thanks to MattoftheDead @mrslezak for the kernel source
