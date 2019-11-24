@@ -3,3 +3,5 @@ sys.usb.rndis.func.name=rndis_bam
 sys.usb.rmnet.func.name=rmnet_bam
 persist.sys.isUsbOtgEnabled=true
 vendor.gatekeeper.disable_spu=true
+ro.boot.avb_version=1.0
+ro.boot.vbmeta.avb_version=1.0
