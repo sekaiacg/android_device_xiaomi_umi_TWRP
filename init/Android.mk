@@ -22,7 +22,7 @@ LOCAL_MODULE_TAGS := optional
 LOCAL_C_INCLUDES := \
     system/core/base/include \
     system/core/init
-LOCAL_SRC_FILES := init_cepheus.cpp
-LOCAL_MODULE := libinit_cepheus
+LOCAL_SRC_FILES := init_umi.cpp
+LOCAL_MODULE := libinit_umi
 
 include $(BUILD_STATIC_LIBRARY)
