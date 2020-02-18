@@ -17,7 +17,8 @@
 # Release name
 PRODUCT_RELEASE_NAME := umi
 
-$(call inherit-product, build/target/product/embedded.mk)
+# $(call inherit-product, build/target/product/embedded.mk)
+PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 # Inherit from our custom product configuration
 $(call inherit-product, vendor/omni/config/common.mk)
