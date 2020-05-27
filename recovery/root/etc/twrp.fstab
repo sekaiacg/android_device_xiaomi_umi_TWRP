@@ -8,7 +8,7 @@
 /vendor        ext4    /dev/block/mapper/vendor                                  flags=display="Vendor";backup=0;logical
 /product       ext4    /dev/block/mapper/product                                 flags=display="Product";backup=0;logical
 /odm           ext4    /dev/block/mapper/odm                                     flags=display="ODM";backup=0;logical
-/metadata      ext4    /dev/block/bootdevice/by-name/metadata                    flags=display="Metadata";backup=1;wrappedkey
+/metadata      ext4    /dev/block/bootdevice/by-name/metadata                    flags=display="Metadata";backup=1
 /super_image   emmc    /dev/block/bootdevice/by-name/super                       flags=backup=1;display="Super"
 /data          ext4    /dev/block/bootdevice/by-name/userdata                    flags=fileencryption=ice:aes-256-cts;wrappedkey;keydirectory=/metadata/vold/metadata_encryption
 /boot          emmc    /dev/block/bootdevice/by-name/boot

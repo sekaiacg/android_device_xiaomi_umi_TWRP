@@ -38,12 +38,6 @@ on early-fs
     start vold
 
 on init
-    mkdir /system/bin
-    mkdir /system/etc
-    symlink /system/etc /etc
-    symlink /sbin/busybox /system/bin/sh
-    symlink /vendor/manifest.xml /system/manifest.xml
-
     start hwservicemanager
     setprop crypto.ready 1
 
