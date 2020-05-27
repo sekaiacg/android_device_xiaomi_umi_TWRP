@@ -16,12 +16,14 @@
 
 # Release name
 PRODUCT_RELEASE_NAME := umi
+DEVICE_PATH := device/xiaomi/umi
 
-# $(call inherit-product, build/target/product/embedded.mk)
-PRODUCT_USE_DYNAMIC_PARTITIONS := true
+$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 
 # Inherit from our custom product configuration
 $(call inherit-product, vendor/omni/config/common.mk)
+
+PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,$(LOCAL_PATH)/recovery/root,recovery/root)
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := umi

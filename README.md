@@ -5,7 +5,9 @@ TWRP device tree for Xiaomi Mi 10
 
 ## Features
 
-**Untested!**
+Booting.
+
+Decryption is not working for now but it should be working right after FsCrypt support is ready.
 
 Mi 10 is using Dynamic Partition! We need update from TWRP.
 
@@ -14,14 +16,14 @@ Mi 10 is using Dynamic Partition! We need update from TWRP.
 First checkout minimal twrp with omnirom tree:
 
 ```
-repo init -u git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-9.0
+repo init -u git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-10.0
 repo sync
 ```
 
 Then add these projects to .repo/manifest.xml:
 
 ```xml
-<project path="device/xiaomi/umi" name="simonsmh/android_device_xiaomi_umi" remote="github" revision="android-9.0" />
+<project path="device/xiaomi/umi" name="simonsmh/android_device_xiaomi_umi" remote="github" revision="android-10" />
 ```
 
 Finally execute these:
@@ -37,3 +39,6 @@ To test it:
 ```
 fastboot boot out/target/product/umi/recovery.img
 ```
+
+## Thanks
+[Oneplus 8 TWRP by mauronofrio.](https://github.com/mauronofrio/android_device_oneplus_instantnoodle_TWRP)
