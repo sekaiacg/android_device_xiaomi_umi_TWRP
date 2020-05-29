@@ -1,0 +1,13 @@
+cc_library_static {
+    name: "libinit_umi",
+    include_dirs: [
+        "system/core/base/include",
+        "system/core/init",
+    ],
+    cflags: [
+        "-Wall",
+//      "-DBUILD_FOR_CMI",  // TODO: Detect cmi
+    ],
+    srcs: ["init_umi.cpp"],
+    recovery_available: true,
+}

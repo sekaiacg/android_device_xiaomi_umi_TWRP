@@ -32,11 +32,3 @@ PRODUCT_BRAND := Xiaomi
 PRODUCT_MODEL := Mi 10
 PRODUCT_MANUFACTURER := Xiaomi
 
-# HACK: Set vendor patch level
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.build.security_patch=2099-12-31
-
-PRODUCT_SYSTEM_PROPERTY_BLACKLIST += \
-    ro.bootimage.build.date.utc \
-    ro.build.date.utc
-

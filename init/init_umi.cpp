@@ -1,5 +1,6 @@
 /*
-   Copyright (C) 2017-2018 The Android Open Source Project
+   Copyright (c) 2015, The Linux Foundation. All rights reserved.
+   Copyright (C) 2020 The OmniRom Project.
    Redistribution and use in source and binary forms, with or without
    modification, are permitted provided that the following conditions are
    met:
@@ -25,46 +26,80 @@
    IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include <cstdlib>
-#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <fcntl.h>
-#include <android-base/logging.h>
+#include <unistd.h>
 #include <android-base/properties.h>
-
+#include <android-base/logging.h>
 #include "property_service.h"
-#include "log.h"
+#include <sys/resource.h>
+#define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
+#include <sys/_system_properties.h>
 
 namespace android {
 namespace init {
 
-void load_properties(const char *model) {
-    property_set("ro.product.name", model);
-    property_set("ro.build.product", model);
-    property_set("ro.product.device", model);
+using android::base::GetProperty;
+using android::init::property_set;
+
+void property_override(const std::string& name, const std::string& value)
+{
+    size_t valuelen = value.size();
+
+    prop_info* pi = (prop_info*) __system_property_find(name.c_str());
+    if (pi != nullptr) {
+        __system_property_update(pi, value.c_str(), valuelen);
+    }
+    else {
+        int rc = __system_property_add(name.c_str(), name.size(), value.c_str(), valuelen);
+        if (rc < 0) {
+            LOG(ERROR) << "property_set(\"" << name << "\", \"" << value << "\") failed: "
+                       << "__system_property_add failed";
+        }
+    }
 }
 
-// TODO: Detect cmi
+void model_property_override(const std::string& device, const std::string& model)
+{
+    property_override("ro.product.device", device);
+    property_override("ro.product.odm.device", device);
+    property_override("ro.product.system.device", device);
+    property_override("ro.product.vendor.device", device);
+    property_override("ro.product.model", model);
+    property_override("ro.product.odm.model", model);
+    property_override("ro.product.system.model", model);
+    property_override("ro.product.vendor.model", model);
+}
+
 void vendor_load_properties() {
-    property_set("ro.bootimage.build.date.utc", "1546335651");
-    property_set("ro.build.date.utc", "1546335651");
-    std::string device_region = android::base::GetProperty("ro.boot.hwc", "");
+
+    property_override("ro.vendor.build.security_patch", "2099-12-31");
+    property_override("ro.bootimage.build.date.utc", "1546335651");
+    property_override("ro.build.date.utc", "1546335651");
+    
+    const std::string device_region = GetProperty("ro.boot.hwc", "");
+    
+#ifndef BUILD_FOR_CMI
     if (device_region == "CN")
-    {
-        load_properties("umi");
-    }
+        model_property_override("umi", "Mi 10");
     else if (device_region == "INDIA")
-    {
-        load_properties("umiin");
-    }
+        model_property_override("umiin", "Mi 10");
     else if (device_region == "GLOBAL")
-    {
-        load_properties("umi");
-    }
+        model_property_override("umi", "Mi 10");
     else
-    {
-        load_properties("umi");
-    }
+        model_property_override("umi", "Mi 10");
+#else
+    if (device_region == "CN")
+        model_property_override("cmi", "Mi 10 Pro");
+    else if (device_region == "INDIA")
+        model_property_override("cmiin", "Mi 10 Pro");
+    else if (device_region == "GLOBAL")
+        model_property_override("cmi", "Mi 10 Pro");
+    else
+        model_property_override("cmi", "Mi 10 Pro");
+#endif
 }
 
-}  // namespace init
-}  // namespace android
+}
+}
