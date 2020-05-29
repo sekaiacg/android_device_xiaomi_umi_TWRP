@@ -76,12 +76,16 @@ void vendor_load_properties() {
     property_override("ro.vendor.build.security_patch", "2099-12-31");
     property_override("ro.bootimage.build.date.utc", "1546335651");
     property_override("ro.build.date.utc", "1546335651");
+#ifndef BUILD_FOR_CMI
     const std::string device_hwversion = GetProperty("ro.boot.hwversion", "");
     if (device_hwversion.at(0) == '1') {
         model_property_override("cmi", "Mi 10 Pro");
     } else {
         model_property_override("umi", "Mi 10");
     }
+#else
+    model_property_override("cmi", "Mi 10 Pro");
+#endif
 }
 
 }
