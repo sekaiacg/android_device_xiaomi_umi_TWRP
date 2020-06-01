@@ -23,7 +23,8 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_minimal.mk)
 # Inherit from our custom product configuration
 $(call inherit-product, vendor/omni/config/common.mk)
 
-PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,$(LOCAL_PATH)/recovery/root,recovery/root)
+# Inherit from hardware-specific part of the product configuration
+$(call inherit-product, $(DEVICE_PATH)/device.mk)
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := umi

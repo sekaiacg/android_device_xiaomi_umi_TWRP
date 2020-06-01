@@ -82,6 +82,7 @@ on boot
     write /sys/class/android_usb/android0/f_ffs/aliases adb
     setprop sys.mtp.device_type 2
     setprop sys.usb.controller "a600000.dwc3"
+    # setprop sys.usb.configfs 1
     setprop vendor.usb.controller ${sys.usb.controller}
 
 on property:sys.usb.config=none
