@@ -26,6 +26,9 @@
 #
 
 on fs
+    chown system system /sys/bus/i2c/drivers/aw8697_haptic/2-005a/f0_save
+    chown system system /sys/bus/i2c/drivers/aw8697_haptic/2-005a/osc_save
+    chown system system /sys/bus/i2c/drivers/aw8697_haptic/3-005a/osc_save
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
     chmod 0660 /dev/qseecom
@@ -87,7 +90,14 @@ service keymaster-4-0 /sbin/android.hardware.keymaster@4.0-service-qti
     disabled
     seclabel u:r:recovery:s0
 
+service vendor.qti.vibrator-1-2 /sbin/vendor.qti.hardware.vibrator@1.2-service
+    class hal
+    user root
+    group root input
+    seclabel u:r:recovery:s0
+
 on boot
+    start vendor.qti.vibrator-1-2
     setprop sys.usb.config adb
 
 on property:crypto.ready=0

@@ -35,11 +35,11 @@ Xiaomi Mi 10 / 10 Pro was announced and released in February 2020.
 - [Decryption](https://github.com/simonsmh/android_bootable_recovery/commits/android-10.0).
 - ADB
 - MTP
+- Super partition functions
+- Vibration
 
 **Not Working**
-
-- Super partition functions (WIP)
-- Vibration
+- OTG
 
 Mi 10 is using Dynamic Partition! We need update from TWRP.
 
