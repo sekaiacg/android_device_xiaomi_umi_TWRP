@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-# PRODUCT_PACKAGES += \
+PRODUCT_PACKAGES += \
     bootctrl.sm8250 \
     bootctrl.sm8250.recovery \
     android.hardware.boot@1.0-service \
@@ -23,8 +23,11 @@
     android.hardware.boot@1.0-impl-wrapper.recovery \
     android.hardware.fastboot@1.0-impl-mock.recovery \
 
+PRODUCT_HOST_PACKAGES += \
+    libandroidicu
+
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(DEVICE_PATH)
 
-PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,$(LOCAL_PATH)/recovery/root,recovery/root)
+# PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,$(LOCAL_PATH)/recovery/root,recovery/root)
