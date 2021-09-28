@@ -35,10 +35,10 @@ Xiaomi Mi 10 / 10 Pro was announced and released in February 2020.
 - **Decryption** (Android 11)
 - ADB
 - MTP
+- OTG
 - Super partition functions
 
 **Not Working**
-- OTG
 - Vibration
 
 Mi 10 is using Dynamic Partition! We need update from TWRP.
@@ -55,7 +55,7 @@ repo sync
 Then add these projects to .repo/manifest.xml:
 
 ```xml
-<project path="device/xiaomi/umi" name="sekaiacg/android_device_xiaomi_umi" remote="github" revision="android-11.0" />
+<project path="device/xiaomi/umi" name="sekaiacg/android_device_xiaomi_umi" remote="github" revision="android-11.0-new" />
 ```
 
 Finally execute these:
