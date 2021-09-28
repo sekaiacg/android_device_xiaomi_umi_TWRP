@@ -55,7 +55,7 @@ BOARD_KERNEL_OFFSET        := 0x00008000
 BOARD_KERNEL_SECOND_OFFSET := 0x00f00000
 BOARD_RAMDISK_OFFSET       := 0x01000000
 TARGET_KERNEL_ARCH := arm64
-ifeq ($(K_DEVICE),umi)
+ifeq ($(PRODUCT_RELEASE_NAME),umi)
 TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/umi/kernel
 else
 TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/cmi/kernel
@@ -69,7 +69,7 @@ BOARD_MKBOOTIMG_ARGS += --second_offset $(BOARD_KERNEL_SECOND_OFFSET)
 
 # Kenel dtb
 # BOARD_INCLUDE_DTB_IN_BOOTIMG := true
-ifeq ($(K_DEVICE),umi)
+ifeq ($(PRODUCT_RELEASE_NAME),umi)
 INSTALLED_DTBIMAGE_TARGET := $(DEVICE_PATH)/prebuilt/umi/dtb
 else
 INSTALLED_DTBIMAGE_TARGET := $(DEVICE_PATH)/prebuilt/cmi/dtb
@@ -81,7 +81,7 @@ BOARD_MKBOOTIMG_ARGS += --dtb_offset $(BOARD_DTB_OFFSET)
 
 # Kenel recovery dtbo
 BOARD_INCLUDE_RECOVERY_DTBO := true
-ifeq ($(K_DEVICE),umi)
+ifeq ($(PRODUCT_RELEASE_NAME),umi)
 BOARD_PREBUILT_RECOVERY_DTBOIMAGE := $(DEVICE_PATH)/prebuilt/umi/recovery_dtbo
 else
 BOARD_PREBUILT_RECOVERY_DTBOIMAGE := $(DEVICE_PATH)/prebuilt/cmi/recovery_dtbo
