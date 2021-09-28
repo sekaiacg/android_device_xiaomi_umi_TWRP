@@ -61,9 +61,10 @@ Then add these projects to .repo/manifest.xml:
 Finally execute these:
 
 ```
+export ALLOW_MISSING_DEPENDENCIES=true
 . build/envsetup.sh
 lunch twrp_umi-eng
-mka recoveryimage ALLOW_MISSING_DEPENDENCIES=true # Only if you use minimal twrp tree.
+mka recoveryimage
 ```
 
 To test it:
