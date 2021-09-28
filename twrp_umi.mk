@@ -27,7 +27,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_minimal.mk)
 $(call inherit-product, $(DEVICE_PATH)/device.mk)
 
 ## Device identifier. This must come after all inclusions
-K_DEVICE :=cmi
+K_DEVICE :=umi
 PRODUCT_DEVICE := umi
 PRODUCT_NAME := twrp_umi
 PRODUCT_BRAND := Xiaomi
