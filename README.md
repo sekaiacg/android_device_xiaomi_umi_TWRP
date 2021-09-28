@@ -3,7 +3,7 @@ For building TWRP for Xiaomi Mi 10 / 10 Pro
 
 TWRP device tree for Xiaomi Mi 10 and Mi 10 Pro
 
-Kernel and all blobs are extracted from [miui_UMI_20.5.24_096a7991fe_10.0](https://bigota.d.miui.com/20.5.24/miui_UMI_20.5.24_096a7991fe_10.0.zip) firmware.
+Kernel and all blobs are extracted from [miui_CMI_21.9.17_1c6ed0daa1_11.0.zip](https://hugeota.d.miui.com/21.9.17/miui_CMI_21.9.17_1c6ed0daa1_11.0.zip) firmware.
 
 The Xiaomi Mi 10 (codenamed _"umi"_) and Xiaomi Mi 10 Pro (codenamed _"cmi"_) are high-end smartphones from Xiaomi.
 
@@ -32,14 +32,14 @@ Xiaomi Mi 10 / 10 Pro was announced and released in February 2020.
 **Works**
 
 - Booting.
-- [Decryption](https://github.com/simonsmh/android_bootable_recovery/commits/android-10.0).
+- **Decryption** (Android 11)
 - ADB
 - MTP
 - Super partition functions
-- Vibration
 
 **Not Working**
 - OTG
+- Vibration
 
 Mi 10 is using Dynamic Partition! We need update from TWRP.
 
@@ -48,21 +48,21 @@ Mi 10 is using Dynamic Partition! We need update from TWRP.
 First checkout minimal twrp with omnirom tree:
 
 ```
-repo init -u git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-10.0
+repo init -u git://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11
 repo sync
 ```
 
 Then add these projects to .repo/manifest.xml:
 
 ```xml
-<project path="device/xiaomi/umi" name="TeamWin/android_device_xiaomi_umi" remote="github" revision="android-10.0" />
+<project path="device/xiaomi/umi" name="sekaiacg/android_device_xiaomi_umi" remote="github" revision="android-11.0" />
 ```
 
 Finally execute these:
 
 ```
 . build/envsetup.sh
-lunch omni_umi-eng
+lunch twrp_umi-eng
 mka recoveryimage ALLOW_MISSING_DEPENDENCIES=true # Only if you use minimal twrp tree.
 ```
 
