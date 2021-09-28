@@ -20,12 +20,14 @@ TARGET_ARCH_VARIANT := armv8-a
 TARGET_CPU_ABI := arm64-v8a
 TARGET_CPU_ABI2 :=
 TARGET_CPU_VARIANT := kryo
+TARGET_CPU_VARIANT_RUNTIME := kryo585
 
 TARGET_2ND_ARCH := arm
-TARGET_2ND_ARCH_VARIANT := armv8-a
+TARGET_2ND_ARCH_VARIANT := $(TARGET_ARCH_VARIANT)
 TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
-TARGET_2ND_CPU_VARIANT := cortex-a73
+TARGET_2ND_CPU_VARIANT := $(TARGET_CPU_VARIANT)
+TARGET_2ND_CPU_VARIANT_RUNTIME := $(TARGET_CPU_VARIANT_RUNTIME)
 
 ENABLE_CPUSETS := true
 ENABLE_SCHEDBOOST := true
@@ -42,7 +44,7 @@ TARGET_BOARD_PLATFORM_GPU := qcom-adreno650
 QCOM_BOARD_PLATFORMS += kona
 
 # Kernel
-BOARD_KERNEL_CMDLINE := console=ttyMSM0,115200n8 androidboot.hardware=qcom androidboot.console=ttyMSM0 androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 androidboot.usbcontroller=a600000.dwc3 swiotlb=2048 loop.max_part=7 cgroup.memory=nokmem,nosocket reboot=panic_warm
+BOARD_KERNEL_CMDLINE := console=ttyMSM0,115200n8 androidboot.hardware=qcom androidboot.console=ttyMSM0 androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 androidboot.usbcontroller=a600000.dwc3 swiotlb=2048 cgroup.memory=nokmem,nosocket reboot=panic_warm
 BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_HEADER_VERSION := 2
 BOARD_KERNEL_IMAGE_NAME := Image
@@ -53,7 +55,12 @@ BOARD_KERNEL_OFFSET        := 0x00008000
 BOARD_KERNEL_SECOND_OFFSET := 0x00f00000
 BOARD_RAMDISK_OFFSET       := 0x01000000
 TARGET_KERNEL_ARCH := arm64
-TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel
+ifeq ($(K_DEVICE),umi)
+TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/umi/kernel
+else
+TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/cmi/kernel
+endif
+
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_KERNEL_HEADER_VERSION)
 BOARD_MKBOOTIMG_ARGS += --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
@@ -62,24 +69,41 @@ BOARD_MKBOOTIMG_ARGS += --second_offset $(BOARD_KERNEL_SECOND_OFFSET)
 
 # Kenel dtb
 # BOARD_INCLUDE_DTB_IN_BOOTIMG := true
-INSTALLED_DTBIMAGE_TARGET := $(DEVICE_PATH)/prebuilt/dtb
+ifeq ($(K_DEVICE),umi)
+INSTALLED_DTBIMAGE_TARGET := $(DEVICE_PATH)/prebuilt/umi/dtb
+else
+INSTALLED_DTBIMAGE_TARGET := $(DEVICE_PATH)/prebuilt/cmi/dtb
+endif
+
 BOARD_DTB_OFFSET := 0x01f00000
 BOARD_MKBOOTIMG_ARGS += --dtb $(INSTALLED_DTBIMAGE_TARGET)
 BOARD_MKBOOTIMG_ARGS += --dtb_offset $(BOARD_DTB_OFFSET)
 
 # Kenel recovery dtbo
 BOARD_INCLUDE_RECOVERY_DTBO := true
-BOARD_PREBUILT_RECOVERY_DTBOIMAGE := $(DEVICE_PATH)/prebuilt/recovery_dtbo
+ifeq ($(K_DEVICE),umi)
+BOARD_PREBUILT_RECOVERY_DTBOIMAGE := $(DEVICE_PATH)/prebuilt/umi/recovery_dtbo
+else
+BOARD_PREBUILT_RECOVERY_DTBOIMAGE := $(DEVICE_PATH)/prebuilt/cmi/recovery_dtbo
+endif
 
 # QCOM
 #TARGET_USE_SDCLANG := true
 
 # Assert
+ifeq ($(K_DEVICE),umi)
 TARGET_OTA_ASSERT_DEVICE := umi
+else
+TARGET_OTA_ASSERT_DEVICE := cmi
+endif
 
 # Avb
 BOARD_AVB_ENABLE := true
 BOARD_AVB_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
+BOARD_AVB_RECOVERY_ALGORITHM := SHA256_RSA4096
+BOARD_AVB_RECOVERY_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
+BOARD_AVB_RECOVERY_ROLLBACK_INDEX := 1
+BOARD_AVB_RECOVERY_ROLLBACK_INDEX_LOCATION := 1
 
 # Partitions
 BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
@@ -115,14 +139,18 @@ BOARD_HAS_LARGE_FILESYSTEM := true
 TARGET_RECOVERY_PIXEL_FORMAT := "BGRA_8888"
 
 # Crypto
+BOARD_USES_QCOM_FBE_DECRYPTION := true
 VENDOR_SECURITY_PATCH := 2099-12-31
+PLATFORM_SECURITY_PATCH := 2099-12-31
 TW_INCLUDE_CRYPTO := true
 TW_INCLUDE_CRYPTO_FBE := true
 TW_INCLUDE_FBE_METADATA_DECRYPT := true
-BOARD_USES_METADATA_PARTITION := true
 
+TW_INCLUDE_RESETPROP :=true
+			     
 # TWRP specific build flags
 TW_THEME := portrait_hdpi
+TW_DEVICE_VERSION=11.0
 RECOVERY_SDCARD_ON_DATA := true
 TARGET_RECOVERY_QCOM_RTC_FIX := true
 TW_EXCLUDE_DEFAULT_USB_INIT := true
@@ -132,13 +160,18 @@ TW_USE_TOOLBOX := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
 TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel0-backlight/brightness"
 TW_MAX_BRIGHTNESS := 2047
-TW_DEFAULT_BRIGHTNESS := 1200
+TW_DEFAULT_LANGUAGE := zh_CN
+TW_DEFAULT_BRIGHTNESS := 390
 TW_Y_OFFSET := 88
 TW_H_OFFSET := -88
 TWRP_INCLUDE_LOGCAT := true
 TARGET_USES_LOGD := true
 TW_NO_SCREEN_BLANK := true
-PLATFORM_VERSION := 16.1.0
+PLATFORM_VERSION := 11.0
 TW_HAS_EDL_MODE := true
 TW_SUPPORT_INPUT_1_2_HAPTICS := true
+
+BOARD_AVB_RECOVERY_ADD_HASH_FOOTER_ARGS += \
+--prop com.android.build.boot.os_version:$(PLATFORM_VERSION) \
+--prop com.android.build.boot.security_patch:$(PLATFORM_SECURITY_PATCH)
 

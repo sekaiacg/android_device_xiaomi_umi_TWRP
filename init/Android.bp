@@ -8,6 +8,9 @@ cc_library_static {
         "-Wall",
 //      "-DBUILD_FOR_CMI",
     ],
+    static_libs: [
+        "libbase",
+    ],
     srcs: ["init_umi.cpp"],
     recovery_available: true,
 }

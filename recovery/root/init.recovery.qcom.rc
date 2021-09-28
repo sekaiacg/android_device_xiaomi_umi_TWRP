@@ -26,6 +26,7 @@
 #
 
 on fs
+    export LD_LIBRARY_PATH /system/lib64:/vendor/lib64:/vendor/lib64/hw
     chown system system /sys/bus/i2c/drivers/aw8697_haptic/2-005a/f0_save
     chown system system /sys/bus/i2c/drivers/aw8697_haptic/2-005a/osc_save
     chown system system /sys/bus/i2c/drivers/aw8697_haptic/3-005a/osc_save
@@ -51,9 +52,8 @@ on early-fs
 
 on init
     start hwservicemanager
-    #setprop crypto.ready 1
-
-service sbinqseecomd /sbin/qseecomd
+    setprop crypto.ready 1
+service vendor.qseecomd /vendor/bin/qseecomd
     user root
     group root
     disabled
@@ -86,36 +86,36 @@ service keystore /system/bin/keystore /tmp/misc/keystore
     disabled
     seclabel u:r:recovery:s0
 
-service gatekeeper-1-0 /sbin/android.hardware.gatekeeper@1.0-service-qti
+service gatekeeper-1-0 /vendor/bin/hw/android.hardware.gatekeeper@1.0-service-qti
     user root
     group root
     disabled
     seclabel u:r:recovery:s0
 
-service keymaster-4-0 /sbin/android.hardware.keymaster@4.0-service-qti
+service keymaster-4-0 /vendor/bin/hw/android.hardware.keymaster@4.0-service-qti
     user root
     group root
     disabled
     seclabel u:r:recovery:s0
 
-service vendor.qti.vibrator /sbin/vendor.qti.hardware.vibrator.service
+service vendor.qti.vibrator /vendor/bin/hw/vendor.qti.hardware.vibrator.service
     class hal
     user system
     group system input
     seclabel u:r:recovery:s0
 
 on boot
-    #start vendor.qti.vibrator
+    start vendor.qti.vibrator
     setprop sys.usb.config adb
 
 on property:crypto.ready=0
-    stop sbinqseecomd
+    stop vendor.qseecomd
     stop keymaster-4-0
     stop gatekeeper-1-0
     stop servicemanager
 
 on property:crypto.ready=1
-    start sbinqseecomd
+    start vendor.qseecomd
 
 on property:vendor.sys.listeners.registered=true
     start keymaster-4-0
