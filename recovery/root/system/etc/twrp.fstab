@@ -1,13 +1,23 @@
-# mount point	          fstype             device         device2                                   flags
+# mount point	          fstype               device         device2                                flags
 /metadata                  ext4                /dev/block/by-name/metadata                            flags=display="Metadata";backup=1
 /data                      f2fs                /dev/block/bootdevice/by-name/userdata                 flags=fileencryption=ice;wrappedkey;keydirectory=/metadata/vold/metadata_encryption
 /cache                     ext4                /dev/block/bootdevice/by-name/cache                    flags=backup=1;wipeingui;wipeduringfactoryreset
+
+# super
+/system                    ext4                /dev/block/mapper/system                               flags=display="system";logical
+/system_ext                ext4                /dev/block/mapper/system_ext                           flags=display="vendor";logical
+/vendor                    ext4                /dev/block/mapper/vendor                               flags=display="vendor";logical
+/product                   ext4                /dev/block/mapper/product                              flags=display="product";logical
+/odm                       ext4                /dev/block/mapper/odm                                  flags=display="odm";logical
+
+/cust                      ext4                /dev/block/bootdevice/by-name/cust                     flags=display="cust";backup=1;flashimg=1
 
 /boot                      emmc                /dev/block/bootdevice/by-name/boot                     flags=display="Boot";backup=1;flashimg=1
 /recovery                  emmc                /dev/block/bootdevice/by-name/recovery                 flags=display="Recovery";backup=1;flashimg=1
 /dtbo                      emmc                /dev/block/bootdevice/by-name/dtbo                     flags=display="DTBO";backup=1;flashimg=1
 /exaid                     emmc                /dev/block/bootdevice/by-name/exaid                    flags=display="exaid";backup=1;flashimg=1
 /vbmeta                    emmc                /dev/block/bootdevice/by-name/vbmeta                   flags=display="VBMeta";backup=1;flashimg=1
+/logo                      emmc                /dev/block/bootdevice/by-name/logo                     flags=display="logo";backup=1;flashimg=1
 /misc                      emmc                /dev/block/bootdevice/by-name/misc                     flags=display="misc"
 
 # Persistent Firmware & Properties
@@ -16,9 +26,9 @@
 
 # Firmware partitions
 /modem                     emmc                /dev/block/bootdevice/by-name/modem                    flags=display="Modem";backup=1;flashimg=1"
-/dsp                       emmc                /dev/block/bootdevice/by-name/dsp                      flags=display="dsp";backup=1;flashimg=1"
+/dsp                       ext4                /dev/block/bootdevice/by-name/dsp                      flags=display="dsp";backup=1;
+/dsp_image                 emmc                /dev/block/bootdevice/by-name/dsp                      flags=display="dsp";flashimg=1
 /devcfg                    emmc                /dev/block/bootdevice/by-name/devcfg                   flags=display="devcfg";backup=1;flashimg=1
 
 # Removable storage
 /usb-otg                   vfat                /dev/block/sdg1    /dev/block/sdg                      flags=display="usb-otg";storage;wipeingui;removable;fsflags="utf8"
-
