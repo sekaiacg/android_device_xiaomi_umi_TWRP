@@ -53,6 +53,7 @@ on early-fs
 on init
     start hwservicemanager
     setprop crypto.ready 1
+
 service vendor.qseecomd /vendor/bin/qseecomd
     user root
     group root

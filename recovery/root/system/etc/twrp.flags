@@ -1,4 +1,4 @@
-# <mount point>	          <fstype>             <device>         <device2>                            <flags>
+# mount point	          fstype             device         device2                                   flags
 /metadata                  ext4                /dev/block/by-name/metadata                            flags=display="Metadata";backup=1
 /data                      f2fs                /dev/block/bootdevice/by-name/userdata                 flags=fileencryption=ice;wrappedkey;keydirectory=/metadata/vold/metadata_encryption
 /cache                     ext4                /dev/block/bootdevice/by-name/cache                    flags=backup=1;wipeingui;wipeduringfactoryreset
