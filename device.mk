@@ -29,9 +29,6 @@ PRODUCT_HOST_PACKAGES += \
 # API
 PRODUCT_SHIPPING_API_LEVEL := 29
 
-# Properties
-include $(DEVICE_PATH)/prop.mk
-
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(DEVICE_PATH)

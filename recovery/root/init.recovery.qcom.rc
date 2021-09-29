@@ -50,9 +50,19 @@ on fs
 on early-fs
     start vold
 
+on early-init
+    start init.prop
+
 on init
     start hwservicemanager
     setprop crypto.ready 1
+    
+service init.prop /init.prop.sh
+    oneshot
+    disabled
+    user root
+    group root
+    seclabel u:r:recovery:s0
 
 service vendor.qseecomd /vendor/bin/qseecomd
     user root
