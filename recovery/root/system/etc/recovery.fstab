@@ -48,7 +48,7 @@ odm                                                     /odm                   e
 /dev/block/bootdevice/by-name/recovery                  /recovery              emmc    defaults                                             defaults
 /dev/block/bootdevice/by-name/exaid                     /exaid                 emmc    defaults                                             defaults
 /dev/block/bootdevice/by-name/misc                      /misc                  emmc    defaults                                             defaults
-/devices/platform/soc/*.ssusb/*.dwc3/xhci-hcd.*.auto*   /storage/usbotg        vfat    nosuid,nodev                                         wait,voldmanaged=usbotg:auto
+#/devices/platform/soc/*.ssusb/*.dwc3/xhci-hcd.*.auto*   /storage/usbotg        vfat    nosuid,nodev                                         wait,voldmanaged=usbotg:auto
 /dev/block/bootdevice/by-name/spunvm                    /spunvm                vfat    rw,noatime,shortname=lower,uid=1000,gid=1000,dmask=007,fmask=007,context=u:object_r:spunvm_file:s0 wait
 /dev/block/bootdevice/by-name/modem                     /firmware              vfat    ro,shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337,context=u:object_r:firmware_file:s0 wait
 /dev/block/bootdevice/by-name/dsp                       /dsp                   ext4    ro,nosuid,nodev,barrier=1                            wait
