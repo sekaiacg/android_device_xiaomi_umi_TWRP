@@ -22,22 +22,20 @@ _resetprop(){
   resetprop ro.product.vendor.name $2
 }
 
-reset(){
+twrp_name=`getprop ro.product.system.name`
 
-if [[ $1 == "1" ]]; then
-  _resetprop "Mi 10 Pro" "cmi"
-else
-  _resetprop "Mi 10" "umi"
-fi
-
-}
-
-hwversion=`getprop ro.boot.hwversion | awk -F '[.]' '{print $1}'`
-
-if [[ ${#hwversion} -ge 1 ]]; then
-  reset $hwversion
-else
-  reset "2"
+if [[ -n "$twrp_name" ]]; then
+  case ${twrp_name} in
+   twrp_umi)
+      _resetprop "Mi 10" "umi"
+      ;;
+   twrp_cmi)
+      _resetprop "Mi 10 Pro" "cmi"
+      ;;
+   *) 
+      exit 0
+      ;;
+  esac
 fi
 
 exit 0
