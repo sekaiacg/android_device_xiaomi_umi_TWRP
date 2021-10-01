@@ -58,6 +58,12 @@ Then add these projects to .repo/manifest.xml:
 <project path="device/xiaomi/umi" name="sekaiacg/android_device_xiaomi_umi" remote="github" revision="android-11.0-new" />
 ```
 
+Use ccache
+```
+#Enable ccache
+export CCACHE_EXEC=$(which ccache)
+```
+
 Finally execute these:
 
 ```
