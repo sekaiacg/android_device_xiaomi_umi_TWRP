@@ -16,6 +16,7 @@
 
 PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/twrp_cmi.mk \
+    $(LOCAL_DIR)/twrp_cas.mk \
     $(LOCAL_DIR)/twrp_umi.mk \
     $(LOCAL_DIR)/twrp_lmi.mk
 

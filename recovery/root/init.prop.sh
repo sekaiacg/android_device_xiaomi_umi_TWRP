@@ -32,6 +32,9 @@ if [[ -n "$twrp_name" ]]; then
    twrp_cmi)
       _resetprop "Mi 10 Pro" "cmi"
       ;;
+   twrp_cas)
+      _resetprop "Mi 10 Ultra" "cas"
+      ;;
    twrp_lmi)
       _resetprop "Redmi K30 Pro" "lmi"
       ;;
