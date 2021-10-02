@@ -15,7 +15,7 @@ Xiaomi Mi 10 / 10 Pro was announced and released in February 2020.
 | -----------: | :------------------------------------------ |
 | SoC          | Qualcomm SM8250 Snapdragon 865              |
 | CPU          | 8x Qualcomm® Kryo™ 585 up to 2.84GHz        |
-| GPU          | Adreno 630                                  |
+| GPU          | Adreno 650                                  |
 | Memory       | 8GB / 12GB RAM (LPDDR5)                     |
 | Shipped Android version | 10                               |
 | Storage      | 128GB / 256GB / 512GB UFS 3.0 flash storage |
