@@ -37,9 +37,6 @@
 #define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
 #include <sys/_system_properties.h>
 
-namespace android {
-namespace init {
-
 using android::base::GetProperty;
 
 void property_override(const std::string& name, const std::string& value)
@@ -85,19 +82,22 @@ void model_property_override(const std::string& device, const std::string& model
 
 void vendor_load_properties() {
     property_override("ro.vendor.build.security_patch", "2099-12-31");
-    property_override("ro.bootimage.build.date.utc", "1546335651");
-    property_override("ro.build.date.utc", "1546335651");
+    //property_override("ro.bootimage.build.date.utc", "1546335651");
+    //property_override("ro.build.date.utc", "1546335651");
 #ifndef BUILD_FOR_CMI
-    const std::string device_hwversion = GetProperty("ro.boot.hwversion", "");
-    if (device_hwversion.at(0) == '1') {
-        model_property_override("cmi", "Mi 10 Pro");
+    const std::string twrp_name = GetProperty("ro.product.system.name", "");
+    if (twrp_name == "twrp_umi") {
+      model_property_override("umi", "Mi 10");
+    } else if (twrp_name == "twrp_cmi") {
+      model_property_override("cmi", "Mi 10 Pro");
+    } else if (twrp_name == "twrp_cas") {
+      model_property_override("cas", "Mi 10 Ultra");
+    } else if (twrp_name == "twrp_lmi") {
+      model_property_override("lmi", "Redmi K30 Pro");
     } else {
-        model_property_override("umi", "Mi 10");
+      model_property_override("unknow", "unknow name");
     }
 #else
     model_property_override("cmi", "Mi 10 Pro");
 #endif
-}
-
-}
 }
