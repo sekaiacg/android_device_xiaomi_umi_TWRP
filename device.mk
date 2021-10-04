@@ -35,4 +35,4 @@ PRODUCT_SOONG_NAMESPACES += \
 
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
-# PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,$(LOCAL_PATH)/recovery/root,recovery/root)
+PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,$(LOCAL_PATH)/prebuilt/$(PRODUCT_RELEASE_NAME)/modules,recovery/root/vendor/lib/modules)

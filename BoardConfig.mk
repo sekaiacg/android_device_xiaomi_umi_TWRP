@@ -152,6 +152,8 @@ PLATFORM_VERSION := 11.0
 TW_HAS_EDL_MODE := true
 TW_SUPPORT_INPUT_1_2_HAPTICS := true
 TW_SUPPORT_INPUT_AIDL_HAPTICS :=true
+# Load kernel modules
+TW_LOAD_VENDOR_MODULES := "exfat.ko"
 
 BOARD_AVB_RECOVERY_ADD_HASH_FOOTER_ARGS += \
 --prop com.android.build.boot.os_version:$(PLATFORM_VERSION) \
