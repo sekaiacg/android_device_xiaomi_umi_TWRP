@@ -37,8 +37,6 @@ Xiaomi Mi 10 / 10 Pro was announced and released in February 2020.
 - MTP
 - OTG
 - Super partition functions
-
-**Not Working**
 - Vibration
 
 Mi 10 is using Dynamic Partition! We need update from TWRP.
