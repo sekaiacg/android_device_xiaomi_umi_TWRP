@@ -33,4 +33,6 @@ PRODUCT_SHIPPING_API_LEVEL := 29
 PRODUCT_SOONG_NAMESPACES += \
     $(DEVICE_PATH)
 
+PRODUCT_USE_DYNAMIC_PARTITIONS := true
+
 # PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,$(LOCAL_PATH)/recovery/root,recovery/root)
