@@ -148,8 +148,10 @@ TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel0-backlight/brightness"
 TW_MAX_BRIGHTNESS := 2047
 TW_DEFAULT_LANGUAGE := zh_CN
 TW_DEFAULT_BRIGHTNESS := 300
+ifneq ($(PRODUCT_RELEASE_NAME),lmi)
 TW_Y_OFFSET := 88
 TW_H_OFFSET := -88
+endif
 TWRP_INCLUDE_LOGCAT := true
 TARGET_USES_LOGD := true
 TW_NO_SCREEN_BLANK := true
