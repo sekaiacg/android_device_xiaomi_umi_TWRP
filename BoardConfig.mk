@@ -132,6 +132,7 @@ TW_INCLUDE_FBE_METADATA_DECRYPT := true
 # Tool
 TW_INCLUDE_REPACKTOOLS := true
 TW_INCLUDE_RESETPROP := true
+TW_INCLUDE_LIBRESETPROP :=true
 			     
 # TWRP specific build flags
 TW_THEME := portrait_hdpi
