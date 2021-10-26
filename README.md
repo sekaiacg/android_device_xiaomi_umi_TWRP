@@ -53,7 +53,7 @@ repo sync
 Then add these projects to .repo/manifest.xml:
 
 ```xml
-<project path="device/xiaomi/umi" name="sekaiacg/android_device_xiaomi_umi" remote="github" revision="android-11.0-new" />
+<project path="device/xiaomi/umi" name="sekaiacg/android_device_xiaomi_umi_TWRP" remote="github" revision="android-11.0-new" />
 ```
 
 Use ccache
