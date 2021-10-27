@@ -1,4 +1,4 @@
-# android_device_xiaomi_umi
+# android_device_xiaomi_umi_TWRP
 For building TWRP for Xiaomi Mi 10 / 10 Pro
 
 TWRP device tree for Xiaomi Mi 10 and Mi 10 Pro
@@ -53,7 +53,7 @@ repo sync
 Then add these projects to .repo/manifest.xml:
 
 ```xml
-<project path="device/xiaomi/umi" name="sekaiacg/android_device_xiaomi_umi_TWRP" remote="github" revision="android-11.0-new" />
+<project path="device/xiaomi/umi" name="sekaiacg/android_device_xiaomi_umi_TWRP" remote="github" revision="android-11" />
 ```
 
 Use ccache
