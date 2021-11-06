@@ -162,7 +162,7 @@ PLATFORM_VERSION := 11.0
 TW_HAS_EDL_MODE := false
 TW_SUPPORT_INPUT_AIDL_HAPTICS :=true
 # Load kernel modules
-TW_LOAD_VENDOR_MODULES := "exfat.ko"
+TW_LOAD_VENDOR_MODULES := "exfat_miui.ko"
 
 ALLOW_MISSING_DEPENDENCIES := true
 
