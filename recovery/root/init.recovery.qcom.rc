@@ -45,6 +45,7 @@ on fs
     chown system drmrpc /dev/qseecom
     chmod 0664 /dev/ion
     chown system system /dev/ion
+    insmod /vendor/lib/modules/exfat_miui.ko
     install_keyring
 
 on early-fs
