@@ -95,6 +95,8 @@ void vendor_load_properties() {
       model_property_override("cas", "Mi 10 Ultra");
     } else if (twrp_name == "twrp_lmi") {
       model_property_override("lmi", "Redmi K30 Pro");
+    } else if (twrp_name == "twrp_apollo") {
+      model_property_override("apollo", "Redmi K30S Ultra");
     } else {
       model_property_override("unknow", "unknow name");
     }
