@@ -86,16 +86,16 @@ void vendor_load_properties() {
     //property_override("ro.bootimage.build.date.utc", "1546335651");
     //property_override("ro.build.date.utc", "1546335651");
 #ifndef BUILD_FOR_CMI
-    const std::string twrp_name = GetProperty("ro.product.system.name", "");
-    if (twrp_name == "twrp_umi") {
+    const std::string twrp_name = GetProperty("ro.twrp.device.name", "");
+    if (twrp_name == "umi") {
       model_property_override("umi", "Mi 10");
-    } else if (twrp_name == "twrp_cmi") {
+    } else if (twrp_name == "cmi") {
       model_property_override("cmi", "Mi 10 Pro");
-    } else if (twrp_name == "twrp_cas") {
+    } else if (twrp_name == "cas") {
       model_property_override("cas", "Mi 10 Ultra");
-    } else if (twrp_name == "twrp_lmi") {
+    } else if (twrp_name == "lmi") {
       model_property_override("lmi", "Redmi K30 Pro");
-    } else if (twrp_name == "twrp_apollo") {
+    } else if (twrp_name == "apollo") {
       model_property_override("apollo", "Redmi K30S Ultra");
     } else {
       model_property_override("unknow", "unknow name");
