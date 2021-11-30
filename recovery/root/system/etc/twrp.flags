@@ -30,8 +30,8 @@
 /modem_img                 emmc                /dev/block/bootdevice/by-name/modem                    flags=display="modem";backup=1;flashimg=1
 /dsp                       ext4                /dev/block/bootdevice/by-name/dsp                      flags=display="dsp"
 /dsp_image                 emmc                /dev/block/bootdevice/by-name/dsp                      flags=display="dsp";backup=1;flashimg=1
-/bluetoot                  vfat                /dev/block/bootdevice/by-name/bluetooth                flags=display="bluetooth";fsflags="ro,shortname=lower,uid=1002,gid=3002,dmask=227,fmask=337,context=u:object_r:bt_firmware_file:s0 wait"
-/bluetoot_image            emmc                /dev/block/bootdevice/by-name/bluetooth                flags=display="bluetooth";backup=1;flashimg=1
+/bluetooth                 vfat                /dev/block/bootdevice/by-name/bluetooth                flags=display="bluetooth";fsflags="ro,shortname=lower,uid=1002,gid=3002,dmask=227,fmask=337,context=u:object_r:bt_firmware_file:s0 wait"
+/bluetooth_image           emmc                /dev/block/bootdevice/by-name/bluetooth                flags=display="bluetooth";backup=1;flashimg=1
 /devcfg                    emmc                /dev/block/bootdevice/by-name/devcfg                   flags=display="devcfg";backup=1;flashimg=1
 /spunvm                    vfat                /dev/block/bootdevice/by-name/spunvm                   flags=display="spunvm";backup=1;fsflags="rw,noatime,shortname=lower,uid=1000,gid=1000,dmask=007,fmask=007,context=u:object_r:spunvm_file:s0 wait"
 
