@@ -2,7 +2,7 @@
 # Magisk General Utility Functions
 ############################################
 
-MAGISK_VER='1c8ebfac-alpha'
+MAGISK_VER='0f71edee-alpha'
 MAGISK_VER_CODE=23015
 
 ###################
@@ -404,7 +404,14 @@ get_flags() {
       KEEPFORCEENCRYPT=false
     fi
   fi
-  [ -z $KEEPVBMETAFLAG ] && KEEPVBMETAFLAG=false
+  if [ -z $KEEPVBMETAFLAG ]; then
+    if [ -e /dev/block/by-name/vbmeta_a ] || [ -e /dev/block/by-name/vbmeta ]; then
+      KEEPVBMETAFLAG=true
+      ui_print "- Found vbmeta partition, keep vbmetaflag"
+    else
+      KEEPVBMETAFLAG=false
+    fi
+  fi
   [ -z $RECOVERYMODE ] && RECOVERYMODE=false
 }
 
