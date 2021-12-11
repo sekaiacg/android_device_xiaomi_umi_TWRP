@@ -44,9 +44,50 @@ getdir() {
   esac
 }
 
+check_data() {
+  DATA=false
+  if grep ' /data ' /proc/mounts | grep -vq 'tmpfs'; then
+    # Test if data is writable
+    touch /data/.rw && rm /data/.rw && DATA=true
+    # Test if data is decrypted
+    $DATA && [ -d /data/adb ] && touch /data/adb/.rw && rm /data/adb/.rw && DATA_DE=true
+  fi
+}
+
+get_flags() {
+  # override variables
+  if [ -z $KEEPVERITY ]; then
+      KEEPVERITY=true
+      ui_print "- System-as-root, keep dm/avb-verity"
+  fi
+  ISENCRYPTED=false
+  grep ' /data ' /proc/mounts | grep -q 'dm-' && ISENCRYPTED=true
+  [ "$(getprop ro.crypto.state)" = "encrypted" ] && ISENCRYPTED=true
+  if [ -z $KEEPFORCEENCRYPT ]; then
+    # No data access means unable to decrypt in recovery
+    if $ISENCRYPTED || ! $DATA; then
+      KEEPFORCEENCRYPT=true
+      ui_print "- Encrypted data, keep forceencrypt"
+    else
+      KEEPFORCEENCRYPT=false
+    fi
+  fi
+  if [ -z $KEEPVBMETAFLAG ]; then
+    if [ -e /dev/block/by-name/vbmeta_a ] || [ -e /dev/block/by-name/vbmeta ]; then
+      KEEPVBMETAFLAG=true
+      ui_print "- Found vbmeta partition, keep vbmetaflag"
+    else
+      KEEPVBMETAFLAG=false
+    fi
+  fi
+}
+
 #################
 # Initialization
 #################
+
+check_data
+get_flags
 
 if [ -z $SOURCEDMODE ]; then
   # Switch to the location of the script file
@@ -69,11 +110,11 @@ fi
 
 # Flags
 [ -z $KEEPVERITY ] && KEEPVERITY=false
-#[ -z $KEEPFORCEENCRYPT ] && KEEPFORCEENCRYPT=false
+[ -z $KEEPFORCEENCRYPT ] && KEEPFORCEENCRYPT=false
 [ -z $KEEPVBMETAFLAG ] && KEEPVBMETAFLAG=false
 [ -z $RECOVERYMODE ] && RECOVERYMODE=false
 export KEEPVERITY
-export KEEPFORCEENCRYPT=true
+export KEEPFORCEENCRYPT
 export KEEPVBMETAFLAG
 
 chmod -R 755 .
