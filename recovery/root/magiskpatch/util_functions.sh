@@ -2,8 +2,8 @@
 # Magisk General Utility Functions
 ############################################
 
-MAGISK_VER='b76a3614-alpha'
-MAGISK_VER_CODE=23015
+MAGISK_VER='0c1f6881-alpha'
+MAGISK_VER_CODE=23016
 
 ###################
 # Helper Functions
@@ -383,7 +383,7 @@ get_flags() {
   getvar KEEPVERITY
   getvar KEEPFORCEENCRYPT
   getvar RECOVERYMODE
-  getvar KEEPVBMETAFLAG
+  getvar PATCHVBMETAFLAG
   if [ -z $KEEPVERITY ]; then
     if $SYSTEM_ROOT; then
       KEEPVERITY=true
@@ -404,12 +404,12 @@ get_flags() {
       KEEPFORCEENCRYPT=false
     fi
   fi
-  if [ -z $KEEPVBMETAFLAG ]; then
+  if [ -z $PATCHVBMETAFLAG ]; then
     if [ -e /dev/block/by-name/vbmeta_a ] || [ -e /dev/block/by-name/vbmeta ]; then
-      KEEPVBMETAFLAG=true
-      ui_print "- Found vbmeta partition, keep vbmetaflag"
+      PATCHVBMETAFLAG=false
     else
-      KEEPVBMETAFLAG=false
+      PATCHVBMETAFLAG=true
+      ui_print "- Not found vbmeta partition, patch vbmetaflag"
     fi
   fi
   [ -z $RECOVERYMODE ] && RECOVERYMODE=false

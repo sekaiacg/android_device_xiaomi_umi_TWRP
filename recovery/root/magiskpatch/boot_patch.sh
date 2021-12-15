@@ -72,12 +72,12 @@ get_flags() {
       KEEPFORCEENCRYPT=false
     fi
   fi
-  if [ -z $KEEPVBMETAFLAG ]; then
+  if [ -z $PATCHVBMETAFLAG ]; then
     if [ -e /dev/block/by-name/vbmeta_a ] || [ -e /dev/block/by-name/vbmeta ]; then
-      KEEPVBMETAFLAG=true
-      ui_print "- Found vbmeta partition, keep vbmetaflag"
+      PATCHVBMETAFLAG=false
     else
-      KEEPVBMETAFLAG=false
+      PATCHVBMETAFLAG=true
+      ui_print "- Not found vbmeta partition, patch vbmetaflag"
     fi
   fi
 }
@@ -111,11 +111,11 @@ fi
 # Flags
 [ -z $KEEPVERITY ] && KEEPVERITY=false
 [ -z $KEEPFORCEENCRYPT ] && KEEPFORCEENCRYPT=false
-[ -z $KEEPVBMETAFLAG ] && KEEPVBMETAFLAG=false
+[ -z $PATCHVBMETAFLAG ] && PATCHVBMETAFLAG=false
 [ -z $RECOVERYMODE ] && RECOVERYMODE=false
 export KEEPVERITY
 export KEEPFORCEENCRYPT
-export KEEPVBMETAFLAG
+export PATCHVBMETAFLAG
 
 chmod -R 755 .
 
@@ -192,7 +192,7 @@ ui_print "- Patching ramdisk"
 
 echo "KEEPVERITY=$KEEPVERITY" > config
 echo "KEEPFORCEENCRYPT=$KEEPFORCEENCRYPT" >> config
-echo "KEEPVBMETAFLAG=$KEEPVBMETAFLAG" >> config
+echo "PATCHVBMETAFLAG=$PATCHVBMETAFLAG" >> config
 echo "RECOVERYMODE=$RECOVERYMODE" >> config
 [ ! -z $SHA1 ] && echo "SHA1=$SHA1" >> config
 
