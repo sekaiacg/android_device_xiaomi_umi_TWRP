@@ -15,7 +15,7 @@
 //
 
 cc_library {
-    name: "bootctrl.kona",
+    name: "bootctrl.xiaomi_sm8250",
     defaults: ["bootctrl_hal_defaults"],
-    static_libs: ["libgptutils.umi"],
+    static_libs: ["libgptutils.xiaomi_sm8250"],
 }
