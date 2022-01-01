@@ -14,7 +14,7 @@
         </interface>
         <fqname>@1.0::IDisplayService/default</fqname>
     </hal>
-    <hal format="hidl">
+    <hal format="hidl" max-level="5">
         <name>android.frameworks.schedulerservice</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
@@ -91,12 +91,12 @@
     <hal format="hidl">
         <name>vendor.qti.hardware.qccsyshal</name>
         <transport>hwbinder</transport>
-        <version>1.0</version>
+        <version>1.1</version>
         <interface>
             <name>IQccsyshal</name>
             <instance>qccsyshal</instance>
         </interface>
-        <fqname>@1.0::IQccsyshal/qccsyshal</fqname>
+        <fqname>@1.1::IQccsyshal/qccsyshal</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.qti.hardware.radio.atcmdfwd</name>
@@ -115,8 +115,10 @@
         <interface>
             <name>Isigma_miracast</name>
             <instance>sigmahal</instance>
+            <instance>sigmahal64</instance>
         </interface>
         <fqname>@1.0::Isigma_miracast/sigmahal</fqname>
+        <fqname>@1.0::Isigma_miracast/sigmahal64</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.qti.hardware.systemhelper</name>
@@ -147,5 +149,6 @@
         <version>28</version>
         <version>29</version>
         <version>30</version>
+        <version>31</version>
     </system-sdk>
 </manifest>
