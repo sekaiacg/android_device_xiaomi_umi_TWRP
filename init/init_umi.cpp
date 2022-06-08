@@ -32,7 +32,6 @@
 #include <unistd.h>
 #include <android-base/properties.h>
 #include <android-base/logging.h>
-#include "property_service.h"
 #include <sys/resource.h>
 #define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
 #include <sys/_system_properties.h>
@@ -77,7 +76,6 @@ void model_property_override(const std::string& device, const std::string& model
     property_override("ro.product.vendor.model", model);
     property_override("ro.product.product.model", model);
     property_override("ro.product.system_ext.model", model);
-
 }
 
 void vendor_load_properties() {
