@@ -44,6 +44,4 @@ PRODUCT_EXTRA_RECOVERY_KEYS += \
 # PRODUCT_RELEASE_NAME ro.twrp.device.name
 PRODUCT_PROPERTY_OVERRIDES += ro.twrp.device.name=$(PRODUCT_RELEASE_NAME)
 
-PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*,$(LOCAL_PATH)/prebuilt/$(PRODUCT_RELEASE_NAME)/modules,$(TARGET_COPY_OUT_RECOVERY)/root/vendor/lib/modules) \
-    $(call find-copy-subdir-files,*,$(LOCAL_PATH)/prebuilt/$(PRODUCT_RELEASE_NAME)/firmware,$(TARGET_COPY_OUT_RECOVERY)/root/vendor/firmware)
+TWRP_REQUIRED_MODULES += miui_prebuilt
