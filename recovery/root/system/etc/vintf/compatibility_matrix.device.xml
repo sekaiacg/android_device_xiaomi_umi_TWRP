@@ -18,13 +18,14 @@
         vendor.xiaomi.cit.wifi@1.0_compatibility_matrix.xml
         vendor.xiaomi.cit.bluetooth@1.0_compatibility_matrix.xml
 -->
-<compatibility-matrix version="2.0" type="framework">
+<compatibility-matrix version="4.0" type="framework">
     <hal format="hidl" optional="true">
         <name>android.hardware.automotive.evs</name>
         <version>1.1</version>
         <interface>
             <name>IEvsEnumerator</name>
             <instance>default</instance>
+            <instance>hw/1</instance>
         </interface>
     </hal>
     <hal format="hidl" optional="true">
@@ -225,6 +226,14 @@
         </interface>
     </hal>
     <hal format="hidl" optional="true">
+        <name>vendor.qti.dvr</name>
+        <version>1.0</version>
+        <interface>
+            <name>IDvrDisplay</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
         <name>vendor.qti.esepowermanager</name>
         <version>1.0-1</version>
         <interface>
@@ -317,7 +326,7 @@
     </hal>
     <hal format="hidl" optional="true">
         <name>vendor.qti.hardware.camera.aon</name>
-        <version>1.0</version>
+        <version>1.0-1</version>
         <interface>
             <name>IAONService</name>
             <instance>aoncameraservice</instance>
@@ -362,6 +371,14 @@
             <name>IDataConnection</name>
             <instance>slot1</instance>
             <instance>slot2</instance>
+        </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.qti.hardware.data.connectionfactory</name>
+        <interface>
+            <name>IFactory</name>
+            <instance>slot0</instance>
+            <instance>slot1</instance>
         </interface>
     </hal>
     <hal format="hidl" optional="true">
@@ -411,7 +428,7 @@
     </hal>
     <hal format="aidl" optional="true">
         <name>vendor.qti.hardware.display.config</name>
-        <version>4</version>
+        <version>1-5</version>
         <interface>
             <name>IDisplayConfig</name>
             <instance>default</instance>
@@ -438,7 +455,7 @@
     </hal>
     <hal format="hidl" optional="true">
         <name>vendor.qti.hardware.dpmservice</name>
-        <version>1.0</version>
+        <version>1.0-1</version>
         <interface>
             <name>IDpmService</name>
             <instance>DpmService</instance>
@@ -687,7 +704,7 @@
     </hal>
     <hal format="aidl" optional="true">
         <name>vendor.qti.hardware.radio.ims</name>
-        <version>1-3</version>
+        <version>1-6</version>
         <interface>
             <name>IImsRadio</name>
             <instance>imsradio0</instance>
@@ -732,7 +749,7 @@
     </hal>
     <hal format="aidl" optional="true">
         <name>vendor.qti.hardware.radio.qtiradio</name>
-        <version>1-2</version>
+        <version>1-5</version>
         <interface>
             <name>IQtiRadioStable</name>
             <instance>slot1</instance>
@@ -855,20 +872,6 @@
         </interface>
     </hal>
     <hal format="hidl" optional="true">
-        <name>vendor.qti.hardware.trustedui</name>
-        <version>1.0-2</version>
-        <interface>
-            <name>ITrustedInput</name>
-            <instance>default</instance>
-            <instance>qtee-vm</instance>
-        </interface>
-        <interface>
-            <name>ITrustedUI</name>
-            <instance>default</instance>
-            <instance>qtee-vm</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
         <name>vendor.qti.hardware.tui_comm</name>
         <version>1.0</version>
         <interface>
@@ -981,7 +984,7 @@
     <hal format="hidl" optional="true">
         <name>vendor.qti.ims.factory</name>
         <version>1.0-1</version>
-        <version>2.0</version>
+        <version>2.0-1</version>
         <interface>
             <name>IImsFactory</name>
             <instance>default</instance>
