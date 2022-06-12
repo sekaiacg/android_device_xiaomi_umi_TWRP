@@ -22,9 +22,6 @@ PRODUCT_PACKAGES += \
     android.hardware.boot@1.0-impl.recovery \
     fastbootd
 
-PRODUCT_HOST_PACKAGES += \
-    libandroidicu
-
 # SHIPPING API
 PRODUCT_SHIPPING_API_LEVEL := 29
 # VNDK API
