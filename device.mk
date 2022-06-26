@@ -17,9 +17,6 @@
 PRODUCT_PACKAGES += \
     bootctrl.xiaomi_sm8250 \
     bootctrl.xiaomi_sm8250.recovery \
-    android.hardware.boot@1.0-service \
-    android.hardware.boot@1.0-impl \
-    android.hardware.boot@1.0-impl.recovery \
     fastbootd
 
 # SHIPPING API
