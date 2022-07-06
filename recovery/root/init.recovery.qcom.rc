@@ -25,6 +25,10 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
+on early-fs
+    write /proc/sys/kernel/sched_lib_name "recovery,Updater,updater"
+    write /proc/sys/kernel/sched_lib_mask_force 255
+
 on fs
     export LD_LIBRARY_PATH /system/lib64:/vendor/lib64:/vendor/lib64/hw
     chown system system /sys/bus/i2c/drivers/aw8697_haptic/2-005a/f0_save
@@ -48,49 +52,19 @@ on fs
     insmod /vendor/lib/modules/exfat_miui.ko
     install_keyring
 
-on early-fs
-    write /proc/sys/kernel/sched_lib_name "recovery,Updater,updater"
-    write /proc/sys/kernel/sched_lib_mask_force 255
-    start vold
-
 on init
-    start hwservicemanager
-    setprop crypto.ready 1
+    start vendor.qseecomd
+
+on boot
+    start health-hal-2-1
+    start vendor.qti.vibrator
+    setprop sys.usb.config adb
+
+on property:vendor.sys.listeners.registered=true
+    start keymaster-4-0
+    start gatekeeper-1-0
 
 service vendor.qseecomd /vendor/bin/qseecomd
-    user root
-    group root
-    disabled
-    seclabel u:r:recovery:s0
-
-service hwservicemanager /system/bin/hwservicemanager
-    user root
-    group root
-    disabled
-    onrestart setprop hwservicemanager.ready false
-    seclabel u:r:recovery:s0
-
-service servicemanager /system/bin/servicemanager
-    user root
-    group root readproc
-    disabled
-    seclabel u:r:recovery:s0
-
-service keystore_auth /system/bin/keystore_auth
-    oneshot
-    user system
-    group root
-    disabled
-    seclabel u:r:recovery:s0
-
-# keystore is started and stopped on demand by TWRP
-service keystore /system/bin/keystore /tmp/misc/keystore
-    user root
-    group root drmrpc readproc
-    disabled
-    seclabel u:r:recovery:s0
-
-service gatekeeper-1-0 /vendor/bin/hw/android.hardware.gatekeeper@1.0-service-qti
     user root
     group root
     disabled
@@ -102,27 +76,14 @@ service keymaster-4-0 /vendor/bin/hw/android.hardware.keymaster@4.0-service-qti
     disabled
     seclabel u:r:recovery:s0
 
+service gatekeeper-1-0 /vendor/bin/hw/android.hardware.gatekeeper@1.0-service-qti
+    user root
+    group root
+    disabled
+    seclabel u:r:recovery:s0
+
 service vendor.qti.vibrator /vendor/bin/hw/vendor.qti.hardware.vibrator.service
     class hal
     user system
     group system input
     seclabel u:r:recovery:s0
-
-on boot
-    start vendor.qti.vibrator
-    start health-hal-2-1
-    setprop sys.usb.config adb
-
-on property:crypto.ready=0
-    stop vendor.qseecomd
-    stop keymaster-4-0
-    stop gatekeeper-1-0
-    stop servicemanager
-
-on property:crypto.ready=1
-    start vendor.qseecomd
-
-on property:vendor.sys.listeners.registered=true
-    start keymaster-4-0
-    start gatekeeper-1-0
-    start servicemanager
