@@ -27,9 +27,11 @@ cc_library {
     cflags: [
         "-Wall",
         "-Werror",
+        "-Wno-unused-parameter",
     ],
     srcs: [
         "gpt-utils.cpp",
+        "recovery-ufs-bsg.cpp",
     ],
     owner: "qti",
     header_libs: [
