@@ -6,6 +6,3 @@ vendor.gatekeeper.disable_spu=true
 
 # Battery Property
 ro.charger.enable_suspend=1
-
-# Timezone
-persist.sys.timezone=Asia/Shanghai
