@@ -89,8 +89,6 @@ void name_property_override(const std::string& name)
 }
 
 void vendor_load_properties() {
-    //property_override("ro.vendor.build.security_patch", "2099-12-31");
-    property_override("ro.virtual_ab.enabled", "false");
     property_override("ro.bootimage.build.date.utc", "1577808000");
     property_override("ro.build.date.utc", "1577808000");
 #ifndef BUILD_FOR_CMI
