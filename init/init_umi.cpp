@@ -78,6 +78,16 @@ void model_property_override(const std::string& device, const std::string& model
     property_override("ro.product.system_ext.model", model);
 }
 
+void name_property_override(const std::string& name)
+{
+    property_override("ro.product.name", name);
+    property_override("ro.product.odm.name", name);
+    property_override("ro.product.vendor.name", name);
+    property_override("ro.product.product.name", name);
+    property_override("ro.product.system_ext.name", name);
+    property_override("ro.product.system.name", name);
+}
+
 void vendor_load_properties() {
     //property_override("ro.vendor.build.security_patch", "2099-12-31");
     property_override("ro.virtual_ab.enabled", "false");
@@ -93,9 +103,14 @@ void vendor_load_properties() {
     } else if (twrp_name == "cas") {
       model_property_override("cas", "Mi 10 Ultra");
     } else if (twrp_name == "lmi") {
-      if (isCN)
-        model_property_override("lmi", "Redmi K30 Pro");
-      else
+      if (isCN) {
+        const std::string sku = GetProperty("ro.boot.product.hardware.sku", "");
+        if (sku == "pro") {
+          model_property_override("lmi", "Redmi K30 Pro Zoom Edition");
+          name_property_override("lmipro");
+        } else
+          model_property_override("lmi", "Redmi K30 Pro");
+      } else
         model_property_override("lmi", "Redmi POCO F2 Pro");
     } else if (twrp_name == "apollo") {
       if (isCN)
