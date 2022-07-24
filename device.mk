@@ -14,8 +14,13 @@
 # limitations under the License.
 #
 
+# Configure base.mk
+$(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
+
+# Configure twrp
+$(call inherit-product, vendor/twrp/config/common.mk)
+
 PRODUCT_PACKAGES += \
-    bootctrl.xiaomi_sm8250 \
     bootctrl.xiaomi_sm8250.recovery \
     fastbootd
 

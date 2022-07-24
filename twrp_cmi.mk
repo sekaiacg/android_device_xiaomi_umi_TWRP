@@ -14,17 +14,13 @@
 # limitations under the License.
 #
 
-# Release name
-PRODUCT_RELEASE_NAME := cmi
 DEVICE_PATH := device/xiaomi/umi
 
-$(call inherit-product, $(SRC_TARGET_DIR)/product/core_minimal.mk)
-
-# Inherit from our custom product configuration
-#$(call inherit-product, vendor/twrp/config/common.mk)
-
-# Inherit from hardware-specific part of the product configuration
+# Inherit from device.mk configuration
 $(call inherit-product, $(DEVICE_PATH)/device.mk)
+
+# Release name
+PRODUCT_RELEASE_NAME := cmi
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := umi
@@ -32,4 +28,3 @@ PRODUCT_NAME := twrp_cmi
 PRODUCT_BRAND := Xiaomi
 PRODUCT_MODEL := Mi 10 Pro
 PRODUCT_MANUFACTURER := Xiaomi
-
