@@ -24,8 +24,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
 $(call inherit-product, vendor/twrp/config/common.mk)
 
 PRODUCT_PACKAGES += \
-    bootctrl.xiaomi_sm8250.recovery \
-    fastbootd
+    bootctrl.xiaomi_sm8250.recovery
 
 # SHIPPING API
 PRODUCT_SHIPPING_API_LEVEL := 29
