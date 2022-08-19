@@ -45,4 +45,5 @@ PRODUCT_EXTRA_RECOVERY_KEYS += \
 # PRODUCT_RELEASE_NAME ro.twrp.device.name
 PRODUCT_PROPERTY_OVERRIDES += ro.twrp.device.name=$(PRODUCT_RELEASE_NAME)
 
-TWRP_REQUIRED_MODULES += miui_prebuilt
+TWRP_REQUIRED_MODULES += miui_prebuilt \
+    magisk_prebuilt
