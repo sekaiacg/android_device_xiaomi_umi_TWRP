@@ -109,7 +109,7 @@ void vendor_load_properties() {
         } else
           model_property_override("lmi", "Redmi K30 Pro");
       } else
-        model_property_override("lmi", "Redmi POCO F2 Pro");
+        model_property_override("lmi", "POCO F2 Pro");
     } else if (twrp_name == "apollo") {
       if (isCN)
         model_property_override("apollo", "Redmi K30S Ultra");
