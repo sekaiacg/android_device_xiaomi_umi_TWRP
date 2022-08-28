@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 CUSTOMZIP_DIR="$1"
 MAGISK_DIR="${CUSTOMZIP_DIR}/Magisk"
@@ -64,17 +64,17 @@ verify()
 		 	local VERIFY_FILE_SHA256=$(echo "${item}" | awk -F '-' '{print $1}')
 			local VERIFY_FILE_NAME=$(echo "${item}" | awk -F '-' '{print $2}')
 			local TARGET_DL_PATH=""
-			[ "${VERIFY_FILE_NAME}" == "${MAGISK_ZIP}" ] && TARGET_DL_PATH=${MAGISK_ZIP_PATH}
-			[ "${VERIFY_FILE_NAME}" == "${MAGISK_VER}" ] && TARGET_DL_PATH=${MAGISK_VER_PATH}
-			[ "${VERIFY_FILE_NAME}" == "${MAGISKALPHA_ZIP}" ] && TARGET_DL_PATH=${MAGISKALPHA_ZIP_PATH}
-			[ "${VERIFY_FILE_NAME}" == "${MAGISKALPHA_VER}" ] && TARGET_DL_PATH=${MAGISKALPHA_VER_PATH}
+			[ "${VERIFY_FILE_NAME}" = "${MAGISK_ZIP}" ] && TARGET_DL_PATH=${MAGISK_ZIP_PATH}
+			[ "${VERIFY_FILE_NAME}" = "${MAGISK_VER}" ] && TARGET_DL_PATH=${MAGISK_VER_PATH}
+			[ "${VERIFY_FILE_NAME}" = "${MAGISKALPHA_ZIP}" ] && TARGET_DL_PATH=${MAGISKALPHA_ZIP_PATH}
+			[ "${VERIFY_FILE_NAME}" = "${MAGISKALPHA_VER}" ] && TARGET_DL_PATH=${MAGISKALPHA_VER_PATH}
 			local TARGET_DL_SHA256=$(sha256sum ${TARGET_DL_PATH} | awk -F ' ' '{print $1}')
 			if [ ${#VERIFY_FILE_SHA256} -ge 64 ] &&
 				[ ${#VERIFY_FILE_NAME} -gt 1 ] &&
 				[ ${#TARGET_DL_PATH} -gt 1 ] &&
 				[ ${#TARGET_DL_SHA256} -ge 64 ]; then
 
-				if [ "${VERIFY_FILE_SHA256}" == "${TARGET_DL_SHA256}" ]; then
+				if [ "${VERIFY_FILE_SHA256}" = "${TARGET_DL_SHA256}" ]; then
 					logYG "${VERIFY_FILE_NAME}: " "Verification succeeded !"
 				else
 					VERIFY_STATE=0
