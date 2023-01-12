@@ -31,12 +31,12 @@ logYG()
 
 curl_dl()
 {
-	$(${CURL} -sL $1 -H 'Cache-Control: no-cache' --connect-timeout 2 -m 30 --retry 2 -o $2)
+	$(${CURL} -sL $1 -H 'Cache-Control: no-cache' --connect-timeout 2 -m 35 --retry 2 -o $2)
 }
 
 curl_read()
 {
-	local RESULT="$(${CURL} -sL $1 -H 'Cache-Control: no-cache' --connect-timeout 2 -m 10 --retry 2)"
+	local RESULT="$(${CURL} -sL $1 -H 'Cache-Control: no-cache' --connect-timeout 2 -m 10 --retry 3)"
 	echo "${RESULT}"
 	return $?
 }
@@ -44,21 +44,20 @@ curl_read()
 download_magisk()
 {
 	[ ! -f "${MAGISK_ZIP_PATH}" ] && curl_dl ${MAGISK_URL}/${MAGISK_ZIP} ${MAGISK_ZIP_PATH}
-	[ ! -f "${MAGISK_VER_PATH}" ] && curl_dl ${MAGISK_URL}/${MAGISK_VER} ${MAGISK_VER_PATH} 
-	[ ! -f "${MAGISKALPHA_ZIP_PATH}" ] && curl_dl ${MAGISK_URL}/${MAGISKALPHA_ZIP} ${MAGISKALPHA_ZIP_PATH} 
+	[ ! -f "${MAGISK_VER_PATH}" ] && curl_dl ${MAGISK_URL}/${MAGISK_VER} ${MAGISK_VER_PATH}
+	[ ! -f "${MAGISKALPHA_ZIP_PATH}" ] && curl_dl ${MAGISK_URL}/${MAGISKALPHA_ZIP} ${MAGISKALPHA_ZIP_PATH}
 	[ ! -f "${MAGISKALPHA_VER_PATH}" ] && curl_dl ${MAGISK_URL}/${MAGISKALPHA_VER} ${MAGISKALPHA_VER_PATH}
-	sleep 1
 }
 
 verify()
 {
-	local VERIFY_STATE=1
+	local VERIFY_FAIL=0
 	if [ -f "${MAGISK_ZIP_PATH}" ] &&
 		[ -f "${MAGISK_VER_PATH}" ] &&
 		[ -f "${MAGISKALPHA_ZIP_PATH}" ] &&
 		[ -f "${MAGISKALPHA_VER_PATH}" ]; then
 		local VERIFY=$(curl_read ${MAGISK_URL}/${MAGISKVERIFY_SHA256} | sed 's/  /-/g')
-		[ ${#VERIFY} -lt 64 ] && logYR "magisk_prebuilt: " "Download file failed !"  && exit 1
+		[ ${#VERIFY} -lt 64 ] && logYR "magisk_prebuilt: " "Read sha256 file failed !"  && exit 1
 		for item in ${VERIFY}
 		do
 		 	local VERIFY_FILE_SHA256=$(echo "${item}" | awk -F '-' '{print $1}')
@@ -68,7 +67,7 @@ verify()
 			[ "${VERIFY_FILE_NAME}" = "${MAGISK_VER}" ] && TARGET_DL_PATH=${MAGISK_VER_PATH}
 			[ "${VERIFY_FILE_NAME}" = "${MAGISKALPHA_ZIP}" ] && TARGET_DL_PATH=${MAGISKALPHA_ZIP_PATH}
 			[ "${VERIFY_FILE_NAME}" = "${MAGISKALPHA_VER}" ] && TARGET_DL_PATH=${MAGISKALPHA_VER_PATH}
-			local TARGET_DL_SHA256=$(sha256sum ${TARGET_DL_PATH} | awk -F ' ' '{print $1}')
+			local TARGET_DL_SHA256="$(sha256sum ${TARGET_DL_PATH} | awk -F ' ' '{print $1}')"
 			if [ ${#VERIFY_FILE_SHA256} -ge 64 ] &&
 				[ ${#VERIFY_FILE_NAME} -gt 1 ] &&
 				[ ${#TARGET_DL_PATH} -gt 1 ] &&
@@ -77,7 +76,14 @@ verify()
 				if [ "${VERIFY_FILE_SHA256}" = "${TARGET_DL_SHA256}" ]; then
 					logYG "${VERIFY_FILE_NAME}: " "Verification succeeded !"
 				else
-					VERIFY_STATE=0
+					# try a second time
+					curl_dl "${MAGISK_URL}/$VERIFY_FILE_NAME" "$TARGET_DL_PATH"
+					TARGET_DL_SHA256=$(sha256sum ${TARGET_DL_PATH} | awk -F ' ' '{print $1}')
+					if [ "${VERIFY_FILE_SHA256}" = "${TARGET_DL_SHA256}" ]; then
+						logYG "${VERIFY_FILE_NAME}: " "Verification succeeded !"
+						continue
+					fi
+					VERIFY_FAIL=1
 					rm -f ${TARGET_DL_PATH} > /dev/null 2>&1
 					logYR "${VERIFY_FILE_NAME}: " "Verification failed !"
 				fi
@@ -86,7 +92,7 @@ verify()
 				exit 1
 			fi
 		done
-		[ ${VERIFY_STATE} -eq 1 ] && exit 0 || exit 1
+		[ ${VERIFY_FAIL} -eq 0 ] && exit 0 || exit 1
 	else
 		logYR "magisk_prebuilt: " "Download file failed !"
 		exit 1
