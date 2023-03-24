@@ -1,22 +1,56 @@
 <!--
     Input:
         vendor_framework_compatibility_matrix.xml
-        qssi_vendor_framework_compatibility_matrix.xml
         vendor_framework_compatibility_matrix.xml
+        vendor_framework_compatibility_matrix.xml
+        vendor_framework_compatibility_matrix.xml
+        vendor_framework_compatibility_matrix.xml
+        vendor_framework_compatibility_matrix.xml
+        vendor_framework_compatibility_matrix.xml
+        vendor_framework_compatibility_matrix.xml
+        vendor_framework_compatibility_matrix.xml
+        vendor.goodix.hardware.sensors.health.xml
+        vendor.fs.fsalsps@1.0.xml
         fod_matrix.xml
-        vendor_framework_compatibility_matrix.xml
-        vendor_framework_compatibility_matrix.xml
-        vendor_framework_compatibility_matrix.xml
-        vendor_framework_compatibility_matrix.xml
-        vendor_framework_compatibility_matrix.xml
-        vendor_framework_compatibility_matrix.xml
-        vendor_framework_compatibility_matrix.xml
         vendor_framework_compatibility_matrix.xml
         vendor_framework_compatibility_matrix.xml
         vendor_framework_compatibility_matrix.xml
         vendor_framework_compatibility_matrix.xml
         vendor.xiaomi.cit.wifi@1.0_compatibility_matrix.xml
         vendor.xiaomi.cit.bluetooth@1.0_compatibility_matrix.xml
+        vendor_framework_compatibility_matrix.xml
+        vendor_framework_compatibility_matrix.xml
+        vendor_framework_compatibility_matrix.xml
+        vendor_framework_compatibility_matrix.xml
+        vendor_framework_compatibility_matrix.xml
+        vendor_framework_compatibility_matrix.xml
+        vendor_framework_compatibility_matrix.xml
+        vendor_framework_compatibility_matrix.xml
+        vendor_framework_compatibility_matrix.xml
+        vendor.xiaomi.sensor.citsensorservice@2.0_compatibility_matrix.xml
+        vendor.xiaomi.sensor.citsensorservice@1.1_compatibility_matrix.xml
+        vendor.xiaomi.sensor.communicate@1.0_compatibility_matrix.xml
+        vendor.xiaomi.hardware.keyboardnanoapp@1.0_compatibility_matrix.xml
+        vendor_framework_compatibility_matrix.xml
+        vendor_framework_compatibility_matrix.xml
+        vendor_framework_compatibility_matrix.xml
+        qssi_vendor_framework_compatibility_matrix.xml
+        qssi_vendor_framework_compatibility_matrix.xml
+        qssi_vendor_framework_compatibility_matrix.xml
+        qssi_vendor_framework_compatibility_matrix.xml
+        qssi_vendor_framework_compatibility_matrix.xml
+        qssi_vendor_framework_compatibility_matrix.xml
+        qssi_vendor_framework_compatibility_matrix.xml
+        qssi_vendor_framework_compatibility_matrix.xml
+        qssi_vendor_framework_compatibility_matrix.xml
+        qssi_vendor_framework_compatibility_matrix.xml
+        qssi_vendor_framework_compatibility_matrix.xml
+        qssi_vendor_framework_compatibility_matrix.xml
+        qssi_vendor_framework_compatibility_matrix.xml
+        vendor_framework_compatibility_matrix.xml
+        vendor_framework_compatibility_matrix.xml
+        vendor_framework_compatibility_matrix.xml
+        vendor_framework_compatibility_matrix.xml
 -->
 <compatibility-matrix version="4.0" type="framework">
     <hal format="hidl" optional="true">
@@ -25,7 +59,6 @@
         <interface>
             <name>IEvsEnumerator</name>
             <instance>default</instance>
-            <instance>hw/1</instance>
         </interface>
     </hal>
     <hal format="hidl" optional="true">
@@ -36,6 +69,18 @@
             <name>IGnss</name>
             <instance>default</instance>
             <instance>gnss_vendor</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>android.hardware.media.c2</name>
+        <version>1.0</version>
+        <version>1.2</version>
+        <interface>
+            <name>IComponentStore</name>
+            <instance>default</instance>
+            <instance>dolby</instance>
+            <instance>ozoaudio</instance>
+            <instance>software</instance>
         </interface>
     </hal>
     <hal format="hidl" optional="true">
@@ -86,6 +131,45 @@
             <name>ISupplicant</name>
             <instance>default</instance>
             <instance>wigigp2p</instance>
+        </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>android.se.omapi</name>
+        <interface>
+            <name>ISecureElementService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>com.fingerprints.extension</name>
+        <version>1.0</version>
+        <interface>
+            <name>IFingerprintEngineering</name>
+            <instance>default</instance>
+        </interface>
+        <interface>
+            <name>IFingerprintNavigation</name>
+            <instance>default</instance>
+        </interface>
+        <interface>
+            <name>IFingerprintSensorTest</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>com.fingerprints.extension</name>
+        <version>3.0</version>
+        <interface>
+            <name>IFingerprintSensorTest</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>com.fingerprints.extension</name>
+        <version>3.0</version>
+        <interface>
+            <name>IFingerprintNavigation</name>
+            <instance>default</instance>
         </interface>
     </hal>
     <hal format="hidl" optional="true">
@@ -176,10 +260,30 @@
         </interface>
     </hal>
     <hal format="hidl" optional="true">
+        <name>vendor.fs.fsalsps</name>
+        <version>1.0</version>
+        <interface>
+            <name>IFsAlsps</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
         <name>vendor.goodix.hardware.biometrics.fingerprint</name>
         <version>2.1</version>
         <interface>
             <name>IGoodixFingerprintDaemon</name>
+            <instance>default</instance>
+        </interface>
+        <interface>
+            <name>IGoodixFingerprintDaemonExt</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.goodix.hardware.sensors.health</name>
+        <version>1.0</version>
+        <interface>
+            <name>IGoodixHealthDaemon</name>
             <instance>default</instance>
         </interface>
     </hal>
@@ -211,9 +315,17 @@
     <hal format="hidl" optional="true">
         <name>vendor.qti.data.factory</name>
         <version>1.0</version>
-        <version>2.0-5</version>
+        <version>2.0-7</version>
         <interface>
             <name>IFactory</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.qti.data.txpwrservice</name>
+        <version>1-2</version>
+        <interface>
+            <name>ITxPwrService</name>
             <instance>default</instance>
         </interface>
     </hal>
@@ -222,14 +334,6 @@
         <version>1.0</version>
         <interface>
             <name>Idiag</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.qti.dvr</name>
-        <version>1.0</version>
-        <interface>
-            <name>IDvrDisplay</name>
             <instance>default</instance>
         </interface>
     </hal>
@@ -254,6 +358,7 @@
     </hal>
     <hal format="aidl" optional="true">
         <name>vendor.qti.gnss</name>
+        <version>1-2</version>
         <interface>
             <name>ILocAidlGnss</name>
             <instance>default</instance>
@@ -316,6 +421,14 @@
             <instance>default</instance>
         </interface>
     </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.qti.hardware.bttpi</name>
+        <version>1-2</version>
+        <interface>
+            <name>IBtTpi</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
     <hal format="hidl" optional="true">
         <name>vendor.qti.hardware.cacert</name>
         <version>1.0</version>
@@ -326,7 +439,7 @@
     </hal>
     <hal format="hidl" optional="true">
         <name>vendor.qti.hardware.camera.aon</name>
-        <version>1.0-1</version>
+        <version>1.0-3</version>
         <interface>
             <name>IAONService</name>
             <instance>aoncameraservice</instance>
@@ -551,7 +664,7 @@
     </hal>
     <hal format="hidl" optional="true">
         <name>vendor.qti.hardware.limits</name>
-        <version>1.0-1</version>
+        <version>1.0-2</version>
         <interface>
             <name>ILimits</name>
             <instance>default</instance>
@@ -587,14 +700,6 @@
         <interface>
             <name>IPowerModule</name>
             <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.qti.hardware.qccsyshal</name>
-        <version>1.0-1</version>
-        <interface>
-            <name>IQccsyshal</name>
-            <instance>qccsyshal</instance>
         </interface>
     </hal>
     <hal format="hidl" optional="true">
@@ -693,6 +798,13 @@
             <instance>slot2</instance>
         </interface>
     </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.qti.hardware.radio.atcmdfwd</name>
+        <interface>
+            <name>IAtCmdFwd</name>
+            <instance>AtCmdFwdAidl</instance>
+        </interface>
+    </hal>
     <hal format="hidl" optional="true">
         <name>vendor.qti.hardware.radio.ims</name>
         <version>1.0-8</version>
@@ -704,7 +816,7 @@
     </hal>
     <hal format="aidl" optional="true">
         <name>vendor.qti.hardware.radio.ims</name>
-        <version>1-6</version>
+        <version>1-9</version>
         <interface>
             <name>IImsRadio</name>
             <instance>imsradio0</instance>
@@ -719,9 +831,16 @@
             <instance>deviceinfo</instance>
         </interface>
     </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.qti.hardware.radio.internal.deviceinfo</name>
+        <interface>
+            <name>IDeviceInfo</name>
+            <instance>deviceinfo</instance>
+        </interface>
+    </hal>
     <hal format="hidl" optional="true">
         <name>vendor.qti.hardware.radio.lpa</name>
-        <version>1.0-2</version>
+        <version>1.0-3</version>
         <interface>
             <name>IUimLpa</name>
             <instance>UimLpa0</instance>
@@ -737,10 +856,18 @@
             <instance>oemhook1</instance>
         </interface>
     </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.qti.hardware.radio.qcrilhook</name>
+        <interface>
+            <name>IQtiOemHook</name>
+            <instance>oemhook0</instance>
+            <instance>oemhook1</instance>
+        </interface>
+    </hal>
     <hal format="hidl" optional="true">
         <name>vendor.qti.hardware.radio.qtiradio</name>
         <version>1.0</version>
-        <version>2.0-6</version>
+        <version>2.0-7</version>
         <interface>
             <name>IQtiRadio</name>
             <instance>slot1</instance>
@@ -749,11 +876,19 @@
     </hal>
     <hal format="aidl" optional="true">
         <name>vendor.qti.hardware.radio.qtiradio</name>
-        <version>1-5</version>
+        <version>1-9</version>
         <interface>
             <name>IQtiRadioStable</name>
             <instance>slot1</instance>
             <instance>slot2</instance>
+        </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.qti.hardware.radio.qtiradioconfig</name>
+        <version>1-3</version>
+        <interface>
+            <name>IQtiRadioConfig</name>
+            <instance>default</instance>
         </interface>
     </hal>
     <hal format="hidl" optional="true">
@@ -872,6 +1007,20 @@
         </interface>
     </hal>
     <hal format="hidl" optional="true">
+        <name>vendor.qti.hardware.trustedui</name>
+        <version>1.0-2</version>
+        <interface>
+            <name>ITrustedInput</name>
+            <instance>default</instance>
+            <instance>qtee-vm</instance>
+        </interface>
+        <interface>
+            <name>ITrustedUI</name>
+            <instance>default</instance>
+            <instance>qtee-vm</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
         <name>vendor.qti.hardware.tui_comm</name>
         <version>1.0</version>
         <interface>
@@ -900,6 +1049,13 @@
     <hal format="hidl" optional="true">
         <name>vendor.qti.hardware.wifi.supplicant</name>
         <version>2.0-3</version>
+        <interface>
+            <name>ISupplicantVendor</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.qti.hardware.wifi.supplicant</name>
         <interface>
             <name>ISupplicantVendor</name>
             <instance>default</instance>
@@ -981,10 +1137,17 @@
             <instance>default</instance>
         </interface>
     </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.qti.ims.datachannelservice</name>
+        <interface>
+            <name>IDataChannelService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
     <hal format="hidl" optional="true">
         <name>vendor.qti.ims.factory</name>
         <version>1.0-1</version>
-        <version>2.0-1</version>
+        <version>2.0-2</version>
         <interface>
             <name>IImsFactory</name>
             <instance>default</instance>
@@ -993,6 +1156,7 @@
     <hal format="hidl" optional="true">
         <name>vendor.qti.imsrtpservice</name>
         <version>3.0</version>
+        <version>3.1</version>
         <interface>
             <name>IRTPService</name>
             <instance>imsrtpservice</instance>
@@ -1024,7 +1188,7 @@
     </hal>
     <hal format="hidl" optional="true">
         <name>vendor.qti.qesdhal</name>
-        <version>1.0-1</version>
+        <version>1.0-3</version>
         <interface>
             <name>IQesdhal</name>
             <instance>default</instance>
@@ -1035,6 +1199,22 @@
         <version>1.0</version>
         <interface>
             <name>IQspmhal</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.qti.sla.service</name>
+        <version>1.0</version>
+        <interface>
+            <name>ISlaService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.qti.sla.service</name>
+        <version>1.0</version>
+        <interface>
+            <name>ISlaService</name>
             <instance>default</instance>
         </interface>
     </hal>
@@ -1086,11 +1266,41 @@
             <instance>default</instance>
         </interface>
     </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.xiaomi.hardware.aon</name>
+        <interface>
+            <name>IAlwaysOn</name>
+            <instance>miaonservicehal</instance>
+        </interface>
+    </hal>
     <hal format="hidl" optional="true">
-        <name>vendor.xiaomi.hardware.batterylife</name>
+        <name>vendor.xiaomi.hardware.bgservice</name>
         <version>1.0</version>
         <interface>
-            <name>IBatteryLife</name>
+            <name>IBGService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.xiaomi.hardware.blackbox</name>
+        <interface>
+            <name>IBlackboxImpl</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.xiaomi.hardware.cameraperf</name>
+        <version>1.0</version>
+        <interface>
+            <name>IMiCameraPerfService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.xiaomi.hardware.campostproc</name>
+        <version>1.0</version>
+        <interface>
+            <name>IMiPostProcService</name>
             <instance>default</instance>
         </interface>
     </hal>
@@ -1111,6 +1321,14 @@
         </interface>
     </hal>
     <hal format="hidl" optional="true">
+        <name>vendor.xiaomi.hardware.cld</name>
+        <version>1.0</version>
+        <interface>
+            <name>ICld</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
         <name>vendor.xiaomi.hardware.displayfeature</name>
         <version>1.0</version>
         <interface>
@@ -1119,10 +1337,50 @@
         </interface>
     </hal>
     <hal format="hidl" optional="true">
+        <name>vendor.xiaomi.hardware.dtool</name>
+        <version>1.0</version>
+        <interface>
+            <name>IDtool</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.xiaomi.hardware.fbo</name>
+        <version>1.0</version>
+        <interface>
+            <name>IFbo</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
         <name>vendor.xiaomi.hardware.fingerprintextension</name>
         <version>1.0</version>
         <interface>
             <name>IXiaomiFingerprint</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.xiaomi.hardware.fingerprintextension</name>
+        <version>1.0</version>
+        <interface>
+            <name>IXiaomiFingerprint</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.xiaomi.hardware.fx.tunnel</name>
+        <version>1.0</version>
+        <interface>
+            <name>IMiFxTunnel</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.xiaomi.hardware.keyboardnanoapp</name>
+        <version>1.0</version>
+        <interface>
+            <name>IKeyboardNanoapp</name>
             <instance>default</instance>
         </interface>
     </hal>
@@ -1143,10 +1401,78 @@
         </interface>
     </hal>
     <hal format="hidl" optional="true">
+        <name>vendor.xiaomi.hardware.midevauth</name>
+        <version>1.0</version>
+        <version>2.0</version>
+        <interface>
+            <name>IMidevauthService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.xiaomi.hardware.midtp</name>
+        <version>1.0</version>
+        <interface>
+            <name>IMiDtp</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.xiaomi.hardware.miface</name>
+        <version>1.0</version>
+        <interface>
+            <name>IMiFace</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.xiaomi.hardware.mimd</name>
+        <version>1.0</version>
+        <interface>
+            <name>IMimd</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
         <name>vendor.xiaomi.hardware.mioob</name>
         <version>1.0</version>
         <interface>
             <name>IMiOob</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.xiaomi.hardware.miperf</name>
+        <version>1.0</version>
+        <interface>
+            <name>IMiPerf</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.xiaomi.hardware.miriskmanager</name>
+        <version>1.0</version>
+        <interface>
+            <name>IMiRiskManager</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.xiaomi.hardware.misecurity</name>
+        <version>1.0</version>
+        <interface>
+            <name>IMiSecurity</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.xiaomi.hardware.misight</name>
+        <interface>
+            <name>ILogMgr</name>
+            <instance>default</instance>
+        </interface>
+        <interface>
+            <name>IMiSight</name>
             <instance>default</instance>
         </interface>
     </hal>
@@ -1175,18 +1501,18 @@
         </interface>
     </hal>
     <hal format="hidl" optional="true">
-        <name>vendor.xiaomi.hardware.mlipay</name>
-        <version>1.0-1</version>
+        <name>vendor.xiaomi.hardware.misys</name>
+        <version>4.0</version>
         <interface>
-            <name>IMlipayService</name>
+            <name>IMiSys</name>
             <instance>default</instance>
         </interface>
     </hal>
     <hal format="hidl" optional="true">
-        <name>vendor.xiaomi.hardware.motor</name>
-        <version>1.0</version>
+        <name>vendor.xiaomi.hardware.mlipay</name>
+        <version>1.0-1</version>
         <interface>
-            <name>IMotor</name>
+            <name>IMlipayService</name>
             <instance>default</instance>
         </interface>
     </hal>
@@ -1200,9 +1526,33 @@
     </hal>
     <hal format="hidl" optional="true">
         <name>vendor.xiaomi.hardware.otrpagent</name>
+        <version>1.0</version>
+        <interface>
+            <name>IOTrPAgent</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.xiaomi.hardware.otrpagent</name>
         <version>2.0</version>
         <interface>
             <name>IOTrPAgent</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.xiaomi.hardware.quickcamera</name>
+        <version>1.0</version>
+        <interface>
+            <name>IQuickCameraService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.xiaomi.hardware.swap</name>
+        <version>1.0</version>
+        <interface>
+            <name>ISwap</name>
             <instance>default</instance>
         </interface>
     </hal>
@@ -1238,14 +1588,110 @@
             <instance>default</instance>
         </interface>
     </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.xiaomi.hidl.minet</name>
+        <version>1.0</version>
+        <interface>
+            <name>IMiNetService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.xiaomi.hidl.minet</name>
+        <version>1.0</version>
+        <interface>
+            <name>IMiNetService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.xiaomi.hidl.minet</name>
+        <version>1.0</version>
+        <interface>
+            <name>IMiNetService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.xiaomi.hidl.miwill</name>
+        <version>1.0</version>
+        <interface>
+            <name>IMiwillService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.xiaomi.hidl.miwill</name>
+        <version>1.0</version>
+        <interface>
+            <name>IMiwillService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.xiaomi.hidl.miwill</name>
+        <version>1.0</version>
+        <interface>
+            <name>IMiwillService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.xiaomi.hw.touchfeature</name>
+        <version>1.0</version>
+        <interface>
+            <name>ITouchFeature</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.xiaomi.modem.qms</name>
+        <version>1.0</version>
+        <interface>
+            <name>IMiQms</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.xiaomi.sensor.citsensorservice</name>
+        <version>2.0</version>
+        <interface>
+            <name>ICitSensorService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.xiaomi.sensor.citsensorservice</name>
+        <version>1.1</version>
+        <interface>
+            <name>ICitSensorService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.xiaomi.sensor.communicate</name>
+        <version>1.0</version>
+        <interface>
+            <name>ISensorCommunicate</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.xiaomi.uwb</name>
+        <version>1.0</version>
+        <interface>
+            <name>IUwb</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
     <sepolicy>
         <kernel-sepolicy-version>30</kernel-sepolicy-version>
-        <sepolicy-version>26.0</sepolicy-version>
-        <sepolicy-version>27.0</sepolicy-version>
         <sepolicy-version>28.0</sepolicy-version>
         <sepolicy-version>29.0</sepolicy-version>
         <sepolicy-version>30.0</sepolicy-version>
         <sepolicy-version>31.0</sepolicy-version>
+        <sepolicy-version>32.0</sepolicy-version>
+        <sepolicy-version>33.0</sepolicy-version>
     </sepolicy>
     <avb>
         <vbmeta-version>1.0</vbmeta-version>

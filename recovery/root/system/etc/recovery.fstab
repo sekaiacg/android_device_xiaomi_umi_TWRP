@@ -45,6 +45,8 @@ vendor                                                  /vendor                e
 vendor                                                  /vendor                erofs   ro                                                   wait,avb,logical,first_stage_mount
 odm                                                     /odm                   ext4    ro,barrier=1,discard                                 wait,avb,logical,first_stage_mount
 odm                                                     /odm                   erofs   ro                                                   wait,avb,logical,first_stage_mount
+mi_ext                                                  /mi_ext                ext4    ro,barrier=1,discard                                 wait,avb=vbmeta,logical,first_stage_mount,nofail
+mi_ext                                                  /mi_ext                erofs   ro                                                   wait,avb=vbmeta,logical,first_stage_mount,nofail
 /dev/block/bootdevice/by-name/metadata                  /metadata              ext4    noatime,nosuid,nodev,discard                         wait,formattable,wrappedkey,first_stage_mount
 /dev/block/bootdevice/by-name/userdata                  /data                  f2fs    noatime,nosuid,nodev,reserve_root=32768,resgid=1065,fsync_mode=nobarrier,inlinecrypt,checkpoint_merge    latemount,wait,formattable,fileencryption=ice,wrappedkey,keydirectory=/metadata/vold/metadata_encryption,quota,reservedsize=128M,sysfs_path=/sys/devices/platform/soc/1d84000.ufshc,checkpoint=fs
 /dev/block/bootdevice/by-name/cache                     /cache                 ext4    nosuid,noatime,nodev,barrier=1                       wait
@@ -65,4 +67,3 @@ odm                                                     /odm                   e
 /dev/block/bootdevice/by-name/modemst2                  /efs2                  emmc    defaults                                             defaults
 /dev/block/bootdevice/by-name/fsc                       /efsc                  emmc    defaults                                             defaults
 /dev/block/bootdevice/by-name/fsg                       /efsg                  emmc    defaults                                             defaults
-
