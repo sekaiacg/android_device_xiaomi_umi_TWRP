@@ -9,6 +9,7 @@
 /vendor                    ext4                /dev/block/mapper/vendor                               flags=display="vendor";logical
 /product                   ext4                /dev/block/mapper/product                              flags=display="product";logical
 /odm                       ext4                /dev/block/mapper/odm                                  flags=display="odm";logical
+/mi_ext                    ext4                /dev/block/mapper/mi_ext                               flags=display="mi_ext";logical
 
 /cust                      ext4                /dev/block/bootdevice/by-name/cust                     flags=display="cust";backup=1;flashimg=1
 
